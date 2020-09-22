@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace API.Model
 {
-    [Table("TB_Trans_Joblist")]
-    public class Joblist : BaseModel
+    [Table("TB_M_Site")]
+    public class Site : BaseModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Supervisor_name { get; set; }
         public DateTimeOffset CreateData { get; set; }
         public DateTimeOffset UpdateDate { get; set; }
         public DateTimeOffset DeleteData { get; set; }

@@ -4,14 +4,16 @@ using API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20200922134619_initInterviewScheduleTB")]
+    partial class initInterviewScheduleTB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,27 +27,19 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTimeOffset>("CreateData");
+                    b.Property<string>("empId");
 
-                    b.Property<DateTimeOffset>("DeleteData");
+                    b.Property<DateTime>("interview_date");
 
-                    b.Property<string>("EmpId");
+                    b.Property<int?>("joblistId");
 
-                    b.Property<DateTime>("Interview_date");
-
-                    b.Property<int>("JoblistId");
-
-                    b.Property<int>("SiteId");
-
-                    b.Property<DateTimeOffset>("UpdateDate");
-
-                    b.Property<bool>("isDelete");
+                    b.Property<int?>("siteId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JoblistId");
+                    b.HasIndex("joblistId");
 
-                    b.HasIndex("SiteId");
+                    b.HasIndex("siteId");
 
                     b.ToTable("InterviewSchedules");
                 });
@@ -96,15 +90,13 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Model.InterviewSchedule", b =>
                 {
-                    b.HasOne("API.Model.Joblist", "Joblist")
+                    b.HasOne("API.Model.Joblist", "joblist")
                         .WithMany()
-                        .HasForeignKey("JoblistId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("joblistId");
 
-                    b.HasOne("API.Model.Site", "Site")
+                    b.HasOne("API.Model.Site", "site")
                         .WithMany()
-                        .HasForeignKey("SiteId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("siteId");
                 });
 #pragma warning restore 612, 618
         }
