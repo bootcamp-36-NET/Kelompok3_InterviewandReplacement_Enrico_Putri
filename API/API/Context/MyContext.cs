@@ -12,6 +12,7 @@ namespace API.Context
         public MyContext(DbContextOptions<MyContext> options) : base(options) { }
 
         public DbSet<Joblist> Joblists { get; set; }
+        public DbSet<Site> Sites { get; set; }
 
     }
 }
