@@ -14,8 +14,8 @@ namespace API.Context
         public DbSet<Joblist> Joblists { get; set; }
         public DbSet<Site> Sites { get; set; }
         public DbSet<InterviewSchedule> InterviewSchedules { get; set; }
-
         public DbSet<Replacement> Replacements { get; set; }
+        public DbSet<Placement> Placements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
