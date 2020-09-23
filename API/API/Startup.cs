@@ -33,6 +33,7 @@ namespace API
             services.AddScoped<JoblistRepo>();
             services.AddScoped<SiteRepository>();
             services.AddScoped<InterviewSchedulesRepo>();
+            services.AddScoped<ReplacementRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

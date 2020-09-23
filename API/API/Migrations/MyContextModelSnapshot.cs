@@ -15,7 +15,7 @@ namespace API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
+                .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -71,7 +71,7 @@ namespace API.Migrations
                     b.ToTable("TB_Trans_Joblist");
                 });
 
-            modelBuilder.Entity("API.Model.Site", b =>
+            modelBuilder.Entity("API.Model.Replacement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,7 +81,38 @@ namespace API.Migrations
 
                     b.Property<DateTimeOffset>("DeleteData");
 
+                    b.Property<string>("EmpId");
+
+                    b.Property<string>("Replacement_reason");
+
+                    b.Property<int>("SiteId");
+
+                    b.Property<DateTimeOffset>("UpdateDate");
+
+                    b.Property<bool>("isDelete");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SiteId");
+
+                    b.ToTable("TB_M_Replacement");
+                });
+
+            modelBuilder.Entity("API.Model.Site", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<DateTimeOffset>("CreateData");
+
+                    b.Property<DateTimeOffset>("DeleteData");
+
                     b.Property<string>("Name");
+
+                    b.Property<int>("PhoneNumber");
 
                     b.Property<string>("Supervisor_name");
 
@@ -103,6 +134,14 @@ namespace API.Migrations
 
                     b.HasOne("API.Model.Site", "Site")
                         .WithMany()
+                        .HasForeignKey("SiteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("API.Model.Replacement", b =>
+                {
+                    b.HasOne("API.Model.Site", "Site")
+                        .WithMany("Replacements")
                         .HasForeignKey("SiteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -12556,23 +12556,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Enrico\\.nuget\\packages\\": {},
+    "C:\\Users\\Cornelia Putri\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Enrico\\source\\repos\\API\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\Kelompok3_InterviewandReplacement_Enrico_Putri\\API\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "C:\\Users\\Enrico\\source\\repos\\API\\WebApp\\WebApp.csproj",
-      "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Enrico\\source\\repos\\API\\WebApp\\obj\\",
+      "projectPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\Kelompok3_InterviewandReplacement_Enrico_Putri\\API\\WebApp\\WebApp.csproj",
+      "packagesPath": "C:\\Users\\Cornelia Putri\\.nuget\\packages\\",
+      "outputPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\Kelompok3_InterviewandReplacement_Enrico_Putri\\API\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Enrico\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Cornelia Putri\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12585,8 +12585,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Enrico\\source\\repos\\API\\API\\API.csproj": {
-              "projectPath": "C:\\Users\\Enrico\\source\\repos\\API\\API\\API.csproj"
+            "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\Kelompok3_InterviewandReplacement_Enrico_Putri\\API\\API\\API.csproj": {
+              "projectPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\Kelompok3_InterviewandReplacement_Enrico_Putri\\API\\API\\API.csproj"
             }
           }
         }

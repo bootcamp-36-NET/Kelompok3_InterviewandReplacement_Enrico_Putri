@@ -13,6 +13,8 @@ namespace API.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string Supervisor_name { get; set; }
+        public string Address { get; set; }
+        public int PhoneNumber { get; set; }
         public DateTimeOffset CreateData { get; set; }
         public DateTimeOffset UpdateDate { get; set; }
         public DateTimeOffset DeleteData { get; set; }
