@@ -15,5 +15,20 @@ namespace API.Context
         public DbSet<Site> Sites { get; set; }
         public DbSet<InterviewSchedule> InterviewSchedules { get; set; }
 
+        public DbSet<Replacement> Replacements { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+
+            builder.Entity<Replacement>()
+                .HasOne(ur => ur.Site)
+                .WithMany(b => b.Replacements)
+                .HasForeignKey(ur => ur.SiteId);
+
+
+            base.OnModelCreating(builder);
+        }
+
+
     }
 }
