@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class AddSite : Migration
+    public partial class initsiteTB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace API.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    Suppervisor_name = table.Column<string>(nullable: true),
+                    Supervisor_name = table.Column<string>(nullable: true),
                     CreateData = table.Column<DateTimeOffset>(nullable: false),
                     UpdateDate = table.Column<DateTimeOffset>(nullable: false),
                     DeleteData = table.Column<DateTimeOffset>(nullable: false),

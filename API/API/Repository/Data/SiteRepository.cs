@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace API.Repository.Data
 {
-   
-    public class SiteRepository: GeneralRepo<Site, MyContext>
+    public class SiteRepository : GeneralRepo<Site, MyContext>
     {
         MyContext _context;
         public SiteRepository(MyContext myContext) : base(myContext) //bisa pake SP dalam sini
         {
             _context = myContext;
-        }  
+        }
     }
 }

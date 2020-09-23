@@ -12536,23 +12536,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Cornelia Putri\\.nuget\\packages\\": {},
+    "C:\\Users\\Enrico\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\Kelompok3_InterviewandReplacement_Enrico_Putri\\API\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Enrico\\source\\repos\\API\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\Kelompok3_InterviewandReplacement_Enrico_Putri\\API\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\Cornelia Putri\\.nuget\\packages\\",
-      "outputPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\Kelompok3_InterviewandReplacement_Enrico_Putri\\API\\API\\obj\\",
+      "projectPath": "C:\\Users\\Enrico\\source\\repos\\API\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Enrico\\source\\repos\\API\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Cornelia Putri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Enrico\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -13,6 +13,7 @@ namespace API.Context
 
         public DbSet<Joblist> Joblists { get; set; }
         public DbSet<Site> Sites { get; set; }
+        public DbSet<InterviewSchedule> InterviewSchedules { get; set; }
 
     }
 }

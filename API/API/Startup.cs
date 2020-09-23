@@ -32,6 +32,7 @@ namespace API
             services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
             services.AddScoped<JoblistRepo>();
             services.AddScoped<SiteRepository>();
+            services.AddScoped<InterviewSchedulesRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

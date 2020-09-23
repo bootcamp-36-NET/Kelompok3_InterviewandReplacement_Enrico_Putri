@@ -15,18 +15,18 @@ namespace API.Controllers
     public class SitesController : BaseController<Site, SiteRepository>
     {
         private readonly SiteRepository _siteRepository;
-        
-        public SitesController(SiteRepository siteRepository): base(siteRepository)
+
+        public SitesController(SiteRepository siteRepository) : base(siteRepository)
         {
             this._siteRepository = siteRepository;
         }
 
         [HttpPut("{Id}")]
-        public async Task<ActionResult<int>> Update (int id, Site entity)
+        public async Task<ActionResult<int>> Update(int id, Site entity)
         {
             var getId = await _siteRepository.GetID(id);
             getId.Name = entity.Name;
-            getId.Suppervisor_name = entity.Suppervisor_name;
+            getId.Supervisor_name = entity.Supervisor_name;
             var data = await _siteRepository.Update(getId);
             if (data.Equals(null))
             {

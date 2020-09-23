@@ -19,7 +19,7 @@ namespace API.Repository
         {
             _context = context;
         }
-        public async Task<int> Create(TEntity entity)
+        public virtual async Task<int> Create(TEntity entity)
         {
             entity.CreateData = DateTimeOffset.Now;
             entity.isDelete = false;

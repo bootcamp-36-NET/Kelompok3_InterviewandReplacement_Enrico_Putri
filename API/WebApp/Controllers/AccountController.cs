@@ -46,7 +46,7 @@ namespace WebApp.Controllers
                 }
                 else if (userVM.VerifyCode == null)
                 {
-                    result = client.PostAsync("users/login/", byteContent).Result;
+                    result = client.PostAsync("auths/login/", byteContent).Result;
                 }
 
                 if (result.IsSuccessStatusCode)
