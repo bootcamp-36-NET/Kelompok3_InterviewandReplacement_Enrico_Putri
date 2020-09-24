@@ -71,12 +71,12 @@ function ClearScreen() {
 }
 
 function GetById(id) {
-    debugger;
+  //  debugger;
     $.ajax({
         url: "/sites/GetById/",
         data: { id: id }
     }).then((result) => {
-        debugger;
+     //   debugger;
         $('#Id').val(result.id);
         $('#SiteName').val(result.name);
         $('#SupervisorName').val(result.supervisor_name);
@@ -89,7 +89,7 @@ function GetById(id) {
 }
 
 function Save() {
-    debugger;
+  //  debugger;
     var Site = new Object();
     Site.id = 0;
     Site.name = $('#SiteName').val();
@@ -104,7 +104,7 @@ function Save() {
         dataType: "JSON",
         data: Site
     }).then((result) => {
-        debugger;
+      //  debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
@@ -122,7 +122,7 @@ function Save() {
 }
 
 function Update() {
-    debugger;
+  //  debugger;
     var Site = new Object();
     Site.id = $('#Id').val();
     Site.name = $('#SiteName').val();
@@ -136,7 +136,7 @@ function Update() {
         dataType: "JSON",
         data: Site
     }).then((result) => {
-        debugger;
+       // debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20200923113114_addSiteTambahan")]
-    partial class addSiteTambahan
+    [Migration("20200924020451_addInitDbBaru")]
+    partial class addInitDbBaru
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,6 +73,35 @@ namespace API.Migrations
                     b.ToTable("TB_Trans_Joblist");
                 });
 
+            modelBuilder.Entity("API.Model.Placement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTimeOffset>("CreateData");
+
+                    b.Property<DateTimeOffset>("DeleteData");
+
+                    b.Property<string>("EmpId");
+
+                    b.Property<DateTime>("PlacementDate");
+
+                    b.Property<DateTime>("PlacementEndDate");
+
+                    b.Property<int>("SiteId");
+
+                    b.Property<DateTimeOffset>("UpdateDate");
+
+                    b.Property<bool>("isDelete");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SiteId");
+
+                    b.ToTable("TB_M_Placement");
+                });
+
             modelBuilder.Entity("API.Model.Replacement", b =>
                 {
                     b.Property<int>("Id")
@@ -85,6 +114,8 @@ namespace API.Migrations
 
                     b.Property<string>("EmpId");
 
+                    b.Property<int>("PlacementId");
+
                     b.Property<string>("Replacement_reason");
 
                     b.Property<int>("SiteId");
@@ -94,6 +125,8 @@ namespace API.Migrations
                     b.Property<bool>("isDelete");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PlacementId");
 
                     b.HasIndex("SiteId");
 
@@ -140,8 +173,21 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("API.Model.Placement", b =>
+                {
+                    b.HasOne("API.Model.Site", "Site")
+                        .WithMany()
+                        .HasForeignKey("SiteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("API.Model.Replacement", b =>
                 {
+                    b.HasOne("API.Model.Placement", "Placement")
+                        .WithMany("Replacements")
+                        .HasForeignKey("PlacementId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("API.Model.Site", "Site")
                         .WithMany("Replacements")
                         .HasForeignKey("SiteId")
