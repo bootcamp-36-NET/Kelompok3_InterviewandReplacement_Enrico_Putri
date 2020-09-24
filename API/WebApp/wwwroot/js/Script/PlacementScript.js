@@ -1,17 +1,16 @@
-﻿var arrJoblist = [];
-var arrEmployee = [];
+﻿var arrEmployee = [];
 var arrSite = [];
 var table = null;
 
 $(document).ready(function () {
     //debugger;
-    table = $('#ManageJoblists').DataTable({
+    table = $('#Replacements').DataTable({
         "processing": true,
         "responsive": true,
         "pagination": true,
         "stateSave": true,
         "ajax": {
-            url: "/interviewschedule/LoadInterviewSchedule",
+            url: "/placement/LoadPlacement",
             type: "GET",
             dataType: "json",
             dataSrc: "",
@@ -24,9 +23,8 @@ $(document).ready(function () {
                     //return meta.row + 1;
                 }
             },
-            { "data": "interview_date" },
             {
-                "data" : "empId"
+                "data": "empId"
                 //"className": "getIdEmp",
                 //render: function (data, type, row, meta) {
                 //    debugger;
@@ -35,7 +33,8 @@ $(document).ready(function () {
                 //    //cekGetId(getid);
                 //}
             },
-            { "data": "joblist.name" },
+            { "data": "placementDate" },
+            { "data": "placementEndDate" },
             { "data": "site.name" },
             //{
             //    "data": "createData",
@@ -78,24 +77,24 @@ $(document).ready(function () {
         //        var rid = rowIdx;
         //        var tl = tableLoop;
         //        var rl = rowLoop;
-                //cekGetId(rowLoop);
-                //var column = this;
-                //var select = $('<select><option value="">Department All</option></select>')
-                //    .appendTo($(column.header()).empty())
-                //    .on('change', function () {
-                //        var val = $.fn.dataTable.util.escapeRegex(
-                //            $(this).val()
-                //        );
+        //cekGetId(rowLoop);
+        //var column = this;
+        //var select = $('<select><option value="">Department All</option></select>')
+        //    .appendTo($(column.header()).empty())
+        //    .on('change', function () {
+        //        var val = $.fn.dataTable.util.escapeRegex(
+        //            $(this).val()
+        //        );
 
-                //        column
-                //            .search(val ? '^' + val + '$' : '', true, false)
-                //            .draw();
-                //    });
-                
-                //this.data().each(function (d, j) {
-                //    debugger;
-                //    $('.getIdEmp').append('<td>' + d + '</td>')
-                //});
+        //        column
+        //            .search(val ? '^' + val + '$' : '', true, false)
+        //            .draw();
+        //    });
+
+        //this.data().each(function (d, j) {
+        //    debugger;
+        //    $('.getIdEmp').append('<td>' + d + '</td>')
+        //});
         //    });
         //}
     });
@@ -120,35 +119,6 @@ function cekGetId(empId) {
     })
 }
 //cekGetId("emp001");
-
-//load joblist
-function LoadJoblist(element) {
-    //debugger;
-    if (arrJoblist.length === 0) {
-        $.ajax({
-            type: "Get",
-            url: "/joblists/LoadJoblist",
-            success: function (data) {
-                arrJoblist = data;
-                renderJoblist(element);
-            }
-        });
-    }
-    else {
-        renderJoblist(element);
-    }
-}
-
-function renderJoblist(element) {
-    var $option = $(element);
-    $option.empty();
-    $option.append($('<option/>').val('0').text('Select Joblist').hide());
-    $.each(arrJoblist, function (i, val) {
-        $option.append($('<option/>').val(val.id).text(val.name))
-    });
-}
-
-LoadJoblist($('#JoblistOption'))
 
 //load employee
 function LoadEmp(element) {
@@ -211,7 +181,7 @@ LoadSite($('#SiteOption'))
 function GetById(id) {
     //debugger;
     $.ajax({
-        url: "/interviewschedule/GetById/",
+        url: "/placement/GetById/",
         data: { id: id }
     }).then((result) => {
         //debugger;
@@ -225,18 +195,18 @@ function GetById(id) {
 
 function Save() {
     debugger;
-    var InterviewSchedule = new Object();
-    InterviewSchedule.Id = 0;
-    InterviewSchedule.interview_date = $('#interviewdate').val();
-    InterviewSchedule.empId = $('#EmployeeOption').val();
-    InterviewSchedule.joblistId = $('#JoblistOption').val();
-    InterviewSchedule.siteId = $('#SiteOption').val();
+    var placement = new Object();
+    placement.Id = 0;
+    placement.empId = $('#EmployeeOption').val();
+    placement.placementDate = $('#placementdate').val();
+    placement.placementEndDate = $('#placementenddate').val();
+    placement.siteId = $('#SiteOption').val();
     $.ajax({
         type: 'POST',
-        url: "/InterviewSchedule/InsertOrUpdate/",
+        url: "/placement/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
-        data: InterviewSchedule
+        data: placement
     }).then((result) => {
         //debugger;
         if (result.statusCode == 200) {
@@ -262,7 +232,7 @@ function Update() {
     Dept.Name = $('#Name').val();
     $.ajax({
         type: 'POST',
-        url: "/interviewschedule/InsertOrUpdate/",
+        url: "/placement/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
         data: Dept
@@ -297,7 +267,7 @@ function Delete(id) {
         if (resultSwal.value) {
             //debugger;
             $.ajax({
-                url: "/interviewschedule/Delete/",
+                url: "/placement/Delete/",
                 data: { id: id }
             }).then((result) => {
                 //debugger;

@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 
 namespace API.Model
 {
-    [Table("TB_M_Site")]
-    public class Site : BaseModel
+    [Table("TB_M_Placement")]
+    public class Placement : BaseModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Supervisor_name { get; set; }
-        public string Address { get; set; }
-        public int PhoneNumber { get; set; }
+        public string EmpId { get; set; }
+        public DateTime PlacementDate { get; set; }
+        public DateTime PlacementEndDate { get; set; }
+
+        [ForeignKey("Site")]
+        public int SiteId { get; set; }
+        public Site Site { get; set; }
+
         public DateTimeOffset CreateData { get; set; }
         public DateTimeOffset UpdateDate { get; set; }
         public DateTimeOffset DeleteData { get; set; }

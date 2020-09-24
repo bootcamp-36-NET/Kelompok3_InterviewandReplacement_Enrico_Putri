@@ -37,3 +37,4 @@ C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Acco
 C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Layout\_Layout.g.cshtml.cs
 C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Joblists\Index.g.cshtml.cs
 C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\InterviewSchedule\Index.g.cshtml.cs
+C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Replacement\Index.g.cshtml.cs

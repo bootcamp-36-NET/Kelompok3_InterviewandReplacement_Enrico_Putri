@@ -1,6 +1,9 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
 @{
-    Layout = null;
+   var userId = Context.Session.GetString("id");
+   var Username= Context.Session.GetString("uname");
+   var email = Context.Session.GetString("email");
+   var level = Context.Session.GetString("lvl");
 }
 
 <!DOCTYPE html>
@@ -93,96 +96,124 @@
                     <div class="admin-info">
                         <div class="font-strong"></div><small></small>
                     </div>
-                    @*@if (level == "HR" || level == "JobSeeker")
-                        {
+                    @if (level == "Admin" || level == "Employee")
+                    {
+                        <div class="admin-info">
+                            <div class="font-strong">@Context.Session.GetString("uname")</div><small>@Context.Session.GetString("lvl")</small>
+                        </div>
 
-                        }*@
-                    <div class="admin-info">
+                    }
+                    @*<div class="admin-info">
                         <div class="font-strong">WELCOME TO</div><small><small>Job Registration Submisson</small></small>
-                    </div>
+                    </div>*@
                     @*@if (level == null)
-                        {
+        {
 
-                        }*@
+        }*@
                 </div>
 
                 <ul class="side-menu metismenu">
-                    @*@if (level == "HR")
-                        {
-                            <li>
-                                <a href="/charts">
-                                    <i class="sidebar-item-icon fa fa-th-large"></i>
-                                    <span class="nav-label">Dashboard</span>
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li>
-                                <a href="/">
-                                    <i class="sidebar-item-icon fa fa-th-large"></i>
-                                    <span class="nav-label">Dashboard</span>
-                                </a>
-                            </li>
-                        }*@
-
-                    @*<li>
+                    @if (level == "Admin")
+                    {
+                        <li>
+                            <a href="/interviewschedule">
+                                <i class="sidebar-item-icon fa fa-th-large"></i>
+                                <span class="nav-label">Dashboard</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
                             <a href="/">
                                 <i class="sidebar-item-icon fa fa-th-large"></i>
                                 <span class="nav-label">Dashboard</span>
                             </a>
-                        </li>*@
-                    @*@if (level == "HR")
-                        {
-                            <li class="heading">FEATURES</li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="sidebar-item-icon fa ti-clip"></i>
-                                    <span class="nav-label">JobSeekers</span><i class="fa fa-angle-left arrow"></i>
-                                </a>
-                                <ul class="nav-2-level collapse">
-                                    <li>
-                                        <a href="/employees">JobSeeker List</a>
-                                    </li>
-                                    <li>
-                                        <a href="/GetApprove">JobSeeker Approve</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="sidebar-item-icon fa fa-table"></i>
-                                    <span class="nav-label">JobList</span><i class="fa fa-angle-left arrow"></i>
-                                </a>
-                                <ul class="nav-2-level collapse">
-                                    <li>
-                                        <a href="/managejoblist">Manage Job Lists</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="sidebar-item-icon fa fa-bar-chart"></i>
-                                    <span class="nav-label">Charts</span><i class="fa fa-angle-left arrow"></i>
-                                </a>
-                                <ul class="nav-2-level collapse">
-                                    <li>
-                                        <a href="/charts">JobSeeker Charts</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        }*@
+                        </li>
+                    }
+                    @if (level == "Admin")
+                    {
+                        <li class="heading">FEATURES</li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa fa-calendar"></i>
+                                <span class="nav-label">Interview Schedule</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/interviewschedule">Manage Schedule</a>
+                                </li>
+                                @*<li>
+                        <a href="/GetApprove">JobSeeker Approve</a>
+                    </li>*@
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa ti-menu-alt"></i>
+                                <span class="nav-label">JobList</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/joblists">Manage Job Lists</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa ti-search"></i>
+                                <span class="nav-label">Site</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/Site">Manage Site</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa ti-location-pin"></i>
+                                <span class="nav-label">Placement</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/">Manage Placement</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa ti-share"></i>
+                                <span class="nav-label">Replcament</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/joblists">Manage Replacement</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @*<li>
+                <a href="javascript:;">
+                    <i class="sidebar-item-icon fa fa-bar-chart"></i>
+                    <span class="nav-label">Charts</span><i class="fa fa-angle-left arrow"></i>
+                </a>
+                <ul class="nav-2-level collapse">
+                    <li>
+                        <a href="/charts">JobSeeker Charts</a>
+                    </li>
+                </ul>
+            </li>*@
+                    }
 
 
                     @*<li class="heading">PAGES</li>*@
 
                     @*<li>
-                            <a href="~/html/dist/calendar.html">
-                                <i class="sidebar-item-icon fa fa-calendar"></i>
-                                <span class="nav-label">Calendar</span>
-                            </a>
-                        </li>*@
+            <a href="~/html/dist/calendar.html">
+                <i class="sidebar-item-icon fa fa-calendar"></i>
+                <span class="nav-label">Calendar</span>
+            </a>
+        </li>*@
                 </ul>
             </div>
         </nav>
@@ -204,7 +235,7 @@
     <script src="~/html/dist/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/js/datatables.min.js"></script>
     @*<script src="~/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/js/jquery.dataTables.min.js"></script>*@
+        <script src="~/js/jquery.dataTables.min.js"></script>*@
     <script src="~/html/dist/assets/vendors/metisMenu/dist/metisMenu.min.js"></script>
     <script src="~/html/dist/assets/vendors/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- PAGE LEVEL PLUGINS-->
