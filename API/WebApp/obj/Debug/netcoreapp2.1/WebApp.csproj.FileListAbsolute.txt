@@ -76,3 +76,4 @@ D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacem
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\WebApp.csproj.CopyComplete
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\WebApp.dll
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\WebApp.pdb
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Placements\Index.g.cshtml.cs

@@ -18,11 +18,11 @@ namespace API.Controllers
     public class ReplacementsController : BaseController<Replacement, ReplacementRepository>
     {
         readonly ReplacementRepository _replacementRepository;
-        private readonly MyContext _context;
-        public ReplacementsController(ReplacementRepository replacementRepository, MyContext myContext) : base(replacementRepository)
+        
+        public ReplacementsController(ReplacementRepository replacementRepository) : base(replacementRepository)
         {
             _replacementRepository = replacementRepository;
-            this._context = myContext;
+            
         }
 
         [HttpPut("{Id}")]
@@ -40,33 +40,33 @@ namespace API.Controllers
         }
 
         //    getAllReplacements
-        [Route("semua")]
-        [HttpGet]
-        public async Task<List<ReplacementVM>> GetAllSemua()
-        {
-            List<ReplacementVM> list = new List<ReplacementVM>();
-            var data = await _context.Replacements.Include("Site").Where(x => x.isDelete == false).ToListAsync();
-            if (data.Count == 0)
-            {
-                return null;
-            }
-            foreach (var replacement in data)
-            {
-                var emp = new ReplacementVM()
-                {
-                    Id = replacement.Id,
-                    EmpId = replacement.EmpId,
-                    //    EmpName = replacement.EmpId,
-                    Replacement_reason = replacement.Replacement_reason,
-                    SiteId = replacement.SiteId,
-                    SiteName = replacement.Site.Name,
-                    Supervisor_name = replacement.Site.Supervisor_name,
-                    Address= replacement.Site.Address
-                };
-                list.Add(emp);
-            }
-            return list;
-        }
+        //[Route("semua")]
+        //[HttpGet]
+        //public async Task<List<ReplacementVM>> GetAllSemua()
+        //{
+        //    List<ReplacementVM> list = new List<ReplacementVM>();
+        //    var data = await _context.Replacements.Include("Site").Where(x => x.isDelete == false).ToListAsync();
+        //    if (data.Count == 0)
+        //    {
+        //        return null;
+        //    }
+        //    foreach (var replacement in data)
+        //    {
+        //        var emp = new ReplacementVM()
+        //        {
+        //            Id = replacement.Id,
+        //            EmpId = replacement.EmpId,
+        //            //    EmpName = replacement.EmpId,
+        //            Replacement_reason = replacement.Replacement_reason,
+        //            SiteId = replacement.SiteId,
+        //            SiteName = replacement.Site.Name,
+        //            Supervisor_name = replacement.Site.Supervisor_name,
+        //            Address= replacement.Site.Address
+        //        };
+        //        list.Add(emp);
+        //    }
+        //    return list;
+        //}
 
         //[Route("semua")]
         //[HttpGet("{id}")]

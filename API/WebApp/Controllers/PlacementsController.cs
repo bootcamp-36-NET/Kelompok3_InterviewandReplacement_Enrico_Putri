@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace WebApp.Controllers
 {
-    public class ReplacementsController : Controller
+    public class PlacementsController : Controller
     {
         readonly HttpClient http = new HttpClient
         {
@@ -23,24 +23,24 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult LoadReplace()
+        public IActionResult LoadPlace()
         {
-            IEnumerable<Replacement> replace = null;
+            IEnumerable<PlacementVM> replace = null;
             //var token = HttpContext.Session.GetString("token");
             //http.DefaultRequestHeaders.Add("Authorization", token);
-            var resTask = http.GetAsync("replacements");
+            var resTask = http.GetAsync("placements/semuaPlacement");
             resTask.Wait();
 
             var result = resTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadAsAsync<List<Replacement>>();
+                var readTask = result.Content.ReadAsAsync<List<PlacementVM>>();
                 readTask.Wait();
                 replace = readTask.Result;
             }
             else
             {
-                replace = Enumerable.Empty<Replacement>();
+                replace = Enumerable.Empty<PlacementVM>();
                 ModelState.AddModelError(string.Empty, "Server Error try after sometimes.");
             }
             return Json(replace);
@@ -50,26 +50,26 @@ namespace WebApp.Controllers
 
         public JsonResult GetById(int id)
         {
-            Replacement replace = null;
+            Placement replace = null;
             //var token = HttpContext.Session.GetString("JWToken");
             //http.DefaultRequestHeaders.Add("Authorization", token);
-            var restTask = http.GetAsync("replacements/" + id);
+            var restTask = http.GetAsync("placements/" + id);
             restTask.Wait();
 
             var result = restTask.Result;
             if (result.IsSuccessStatusCode)
             {
                 var readTask = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
-                replace = JsonConvert.DeserializeObject<Replacement>(readTask);
+                replace = JsonConvert.DeserializeObject<Placement>(readTask);
             }
             return Json(replace);
         }
 
-        public JsonResult InsertOrUpdate(Replacement replacement, int id)
+        public JsonResult InsertOrUpdate(Placement placement, int id)
         {
             try
             {
-                var json = JsonConvert.SerializeObject(replacement);
+                var json = JsonConvert.SerializeObject(placement);
                 var buffer = System.Text.Encoding.UTF8.GetBytes(json);
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -77,14 +77,14 @@ namespace WebApp.Controllers
                 //var token = HttpContext.Session.GetString("JWToken");
                 //http.DefaultRequestHeaders.Add("Authorization", token);
 
-                if (replacement.Id == 0)
+                if (placement.Id == 0)
                 {
-                    var result = http.PostAsync("replacements", byteContent).Result;
+                    var result = http.PostAsync("placements", byteContent).Result;
                     return Json(result);
                 }
-                else if (replacement.Id != 0)
+                else if (placement.Id != 0)
                 {
-                    var result = http.PutAsync("replacements/" + id, byteContent).Result;
+                    var result = http.PutAsync("placements/" + id, byteContent).Result;
                     return Json(result);
                 }
 
@@ -98,9 +98,9 @@ namespace WebApp.Controllers
 
         public JsonResult Delete(int id)
         {
-           // var token = HttpContext.Session.GetString("JWToken");
-           // http.DefaultRequestHeaders.Add("Authorization", token);
-            var result = http.DeleteAsync("replacements/" + id).Result;
+            // var token = HttpContext.Session.GetString("JWToken");
+            // http.DefaultRequestHeaders.Add("Authorization", token);
+            var result = http.DeleteAsync("placements/" + id).Result;
             return Json(result);
         }
     }
