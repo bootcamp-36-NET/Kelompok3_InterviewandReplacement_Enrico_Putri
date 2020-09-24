@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Model;
+using API.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -24,23 +25,25 @@ namespace WebApp.Controllers
 
         public JsonResult LoadReplace()
         {
-            IEnumerable<Replacement> replace = null;
+            IEnumerable<ReplacementVM> rooms = null;
             //var token = HttpContext.Session.GetString("JWToken");
-            //http.DefaultRequestHeaders.Add("Authorization", token);
-            var restTask = http.GetAsync("replacements");
+            //httpClient.DefaultRequestHeaders.Add("Authorization", token);
+            var restTask = http.GetAsync("replacements/semua");
             restTask.Wait();
 
             var result = restTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadAsAsync<IList<Replacement>>();
+                var readTask = result.Content.ReadAsAsync<IList<ReplacementVM>>();
                 readTask.Wait();
-                replace = readTask.Result;
+                rooms = readTask.Result;
+
             }
-            return Json(replace, new Newtonsoft.Json.JsonSerializerSettings());
+            return Json(rooms, new Newtonsoft.Json.JsonSerializerSettings());
+
         }
 
-        public JsonResult GetById(string id)
+        public JsonResult GetById(int id)
         {
             Replacement replace = null;
             //var token = HttpContext.Session.GetString("JWToken");
@@ -57,7 +60,7 @@ namespace WebApp.Controllers
             return Json(replace);
         }
 
-        public JsonResult InsertOrUpdate(Replacement replacement, string id)
+        public JsonResult InsertOrUpdate(Replacement replacement, int id)
         {
             try
             {
@@ -88,7 +91,7 @@ namespace WebApp.Controllers
             }
         }
 
-        public JsonResult Delete(string id)
+        public JsonResult Delete(int id)
         {
            // var token = HttpContext.Session.GetString("JWToken");
            // http.DefaultRequestHeaders.Add("Authorization", token);

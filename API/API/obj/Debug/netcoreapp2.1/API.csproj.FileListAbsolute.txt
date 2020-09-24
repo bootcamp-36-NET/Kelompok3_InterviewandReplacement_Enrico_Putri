@@ -25,4 +25,3 @@ D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacem
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\API\obj\Debug\netcoreapp2.1\API.dll
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\API\obj\Debug\netcoreapp2.1\API.pdb
-D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\API\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache
