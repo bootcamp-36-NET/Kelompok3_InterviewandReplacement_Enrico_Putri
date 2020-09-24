@@ -17,23 +17,26 @@ namespace API.Controllers
     [ApiController]
     public class InterviewSchedulesController : BaseController<InterviewSchedule, InterviewSchedulesRepo>
     {
-        readonly InterviewSchedulesRepo _joblistRepo;
+        readonly InterviewSchedulesRepo _interviewscheduleRepo;
         public InterviewSchedulesController(InterviewSchedulesRepo interviewSchedulesRepo) : base(interviewSchedulesRepo)
         {
-            _joblistRepo = interviewSchedulesRepo;
+            _interviewscheduleRepo = interviewSchedulesRepo;
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<int>> Update(int id, Joblist entity)
+        public async Task<ActionResult<int>> Update(int id, InterviewSchedule entity)
         {
-            var getid = await _joblistRepo.GetID(id);
-            //getid.Name = entity.Name;
-            var data = await _joblistRepo.Update(getid);
+            var getid = await _interviewscheduleRepo.GetID(id);
+            getid.Interview_date = entity.Interview_date;
+            getid.EmpId = entity.EmpId;
+            getid.JoblistId = entity.JoblistId;
+            getid.SiteId = entity.SiteId;
+            var data = await _interviewscheduleRepo.Update(getid);
             if (data.Equals(null))
             {
-                return BadRequest("Update Unsuccessfull");
+                return BadRequest("Data is not Update");
             }
-            return data;
+            return Ok("Update Successfull");
         }
     }
 }

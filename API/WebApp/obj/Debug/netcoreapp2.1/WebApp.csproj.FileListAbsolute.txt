@@ -34,3 +34,6 @@ C:\Users\Enrico\source\repos\API\WebApp\bin\Debug\netcoreapp2.1\API.dll
 C:\Users\Enrico\source\repos\API\WebApp\bin\Debug\netcoreapp2.1\API.pdb
 C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\Index.g.cshtml.cs
 C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
+C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Layout\_Layout.g.cshtml.cs
+C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Joblists\Index.g.cshtml.cs
+C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\InterviewSchedule\Index.g.cshtml.cs

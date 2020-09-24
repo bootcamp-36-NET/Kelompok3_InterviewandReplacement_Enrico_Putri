@@ -15,7 +15,11 @@ namespace API.ViewModel
         public string RoleID { get; set; }
         public string RoleName { get; set; }
         public string VerifyCode { get; set; }
-        public int Joblists { get; set; }
-        public string JoblistName { get; set; }
+        public DateTime interview_date { get; set; }
+        public string joblistID { get; set; }
+        public string joblistName { get; set; }
+        public int siteId { get; set; }
+        public int siteName { get; set; }
+        public int siteSupName { get; set; }
     }
 }

@@ -17,7 +17,7 @@ function Login() {
             if (result.msg == "VerifyCode") {
                 window.location.href = "/verify?mail=" + validate.Email;
             } else {
-                window.location.href = "/Dashboard";
+                window.location.href = "/interviewschedule";
             }
         } else {
             $.notify({
