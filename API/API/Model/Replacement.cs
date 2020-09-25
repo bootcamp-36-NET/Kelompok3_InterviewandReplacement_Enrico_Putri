@@ -22,9 +22,5 @@ namespace API.Model
         public DateTimeOffset UpdateDate { get; set; }
         public DateTimeOffset DeleteData { get; set; }
         public bool isDelete { get; set; }
-
-        //[ForeignKey("Placement")]
-        //public int PlacementId { get; set; }
-        //public Placement Placement { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using API.Context;
 using API.Model;
+using API.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -28,10 +29,21 @@ namespace API.Repository.Data
             return createItem;
         }
 
+        public override async Task<List<InterviewSchedule>> GetAll()
+        {
+            List<InterviewVM> list = new List<InterviewVM>();
+            var data = await _context.InterviewSchedules.Include("Joblist").Include("Site").Where(x => x.isDelete == false).ToListAsync();
+            if (data.Count == 0)
+            {
+                return null;
+            }
+            return data;
+        }
+
         //public override async Task<InterviewSchedule> GetID(int Id)
         //{
         //    var data = await _context.InterviewSchedules.Include("joblist").Include("site").SingleOrDefaultAsync(x => x.Id == Id && x.isDelete == false);
-           
+
         //    if (!data.Equals(0))
         //    {
         //        return data;

@@ -1,6 +1,9 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
 @{
-    Layout = null;
+   var userId = Context.Session.GetString("id");
+   var Username= Context.Session.GetString("uname");
+   var email = Context.Session.GetString("email");
+   var level = Context.Session.GetString("lvl");
 }
 
 <!DOCTYPE html>
@@ -9,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Tugas Rico X Jepri</title>
+    <title>Layout</title>
     <!-- GLOBAL MAINLY STYLES-->
     <link href="~/html/dist/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/html/dist/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -65,17 +68,17 @@
                         </ul>
                     </li>
                     @*@if (level != null)
-                    {
+                        {
 
-                    }*@
+                        }*@
 
                 </ul>
                 @*@if (level == null)
-                {
-                    <a href="/login">
-                        <button class="btn btn-info btn-block">Login</button>
-                    </a>
-                }*@
+                    {
+                        <a href="/login">
+                            <button class="btn btn-info btn-block">Login</button>
+                        </a>
+                    }*@
 
 
                 <!-- END TOP-RIGHT TOOLBAR-->
@@ -93,24 +96,27 @@
                     <div class="admin-info">
                         <div class="font-strong"></div><small></small>
                     </div>
-                    @*@if (level == "HR" || level == "JobSeeker")
+                    @if (level == "Admin" || level == "Employee")
+                    {
+                        <div class="admin-info">
+                            <div class="font-strong">@Context.Session.GetString("uname")</div><small>@Context.Session.GetString("lvl")</small>
+                        </div>
+
+                    }
+                    @*<div class="admin-info">
+                        <div class="font-strong">WELCOME TO</div><small><small>Job Registration Submisson</small></small>
+                    </div>*@
+                    @*@if (level == null)
         {
 
         }*@
-                    <div class="admin-info">
-                        <div class="font-strong">WELCOME TO</div><small><small>Job Registration Submisson</small></small>
-                    </div>
-                    @*@if (level == null)
-                    {
-
-                    }*@
                 </div>
 
                 <ul class="side-menu metismenu">
-                    @*@if (level == "HR")
+                    @if (level == "Admin")
                     {
                         <li>
-                            <a href="/charts">
+                            <a href="/interviewschedule">
                                 <i class="sidebar-item-icon fa fa-th-large"></i>
                                 <span class="nav-label">Dashboard</span>
                             </a>
@@ -124,65 +130,90 @@
                                 <span class="nav-label">Dashboard</span>
                             </a>
                         </li>
-                    }*@
-
-                    @*<li>
-                            <a href="/">
-                                <i class="sidebar-item-icon fa fa-th-large"></i>
-                                <span class="nav-label">Dashboard</span>
-                            </a>
-                        </li>*@
-                    @*@if (level == "HR")
+                    }
+                    @if (level == "Admin")
                     {
                         <li class="heading">FEATURES</li>
                         <li>
                             <a href="javascript:;">
-                                <i class="sidebar-item-icon fa ti-clip"></i>
-                                <span class="nav-label">JobSeekers</span><i class="fa fa-angle-left arrow"></i>
+                                <i class="sidebar-item-icon fa fa-calendar"></i>
+                                <span class="nav-label">Interview Schedule</span><i class="fa fa-angle-left arrow"></i>
                             </a>
                             <ul class="nav-2-level collapse">
                                 <li>
-                                    <a href="/employees">JobSeeker List</a>
+                                    <a href="/interviewschedule">Manage Schedule</a>
                                 </li>
-                                <li>
-                                    <a href="/GetApprove">JobSeeker Approve</a>
-                                </li>
+                                @*<li>
+                        <a href="/GetApprove">JobSeeker Approve</a>
+                    </li>*@
                             </ul>
                         </li>
                         <li>
                             <a href="javascript:;">
-                                <i class="sidebar-item-icon fa fa-table"></i>
+                                <i class="sidebar-item-icon fa ti-menu-alt"></i>
                                 <span class="nav-label">JobList</span><i class="fa fa-angle-left arrow"></i>
                             </a>
                             <ul class="nav-2-level collapse">
                                 <li>
-                                    <a href="/managejoblist">Manage Job Lists</a>
+                                    <a href="/joblists">Manage Job Lists</a>
                                 </li>
                             </ul>
                         </li>
-
                         <li>
                             <a href="javascript:;">
-                                <i class="sidebar-item-icon fa fa-bar-chart"></i>
-                                <span class="nav-label">Charts</span><i class="fa fa-angle-left arrow"></i>
+                                <i class="sidebar-item-icon fa ti-search"></i>
+                                <span class="nav-label">Site</span><i class="fa fa-angle-left arrow"></i>
                             </a>
                             <ul class="nav-2-level collapse">
                                 <li>
-                                    <a href="/charts">JobSeeker Charts</a>
+                                    <a href="/Site">Manage Site</a>
                                 </li>
                             </ul>
                         </li>
-                    }*@
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa ti-location-pin"></i>
+                                <span class="nav-label">Placement</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/placement">Manage Placement</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa ti-share"></i>
+                                <span class="nav-label">Replcament</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/replacement">Manage Replacement</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @*<li>
+                <a href="javascript:;">
+                    <i class="sidebar-item-icon fa fa-bar-chart"></i>
+                    <span class="nav-label">Charts</span><i class="fa fa-angle-left arrow"></i>
+                </a>
+                <ul class="nav-2-level collapse">
+                    <li>
+                        <a href="/charts">JobSeeker Charts</a>
+                    </li>
+                </ul>
+            </li>*@
+                    }
 
 
                     @*<li class="heading">PAGES</li>*@
 
                     @*<li>
-                            <a href="~/html/dist/calendar.html">
-                                <i class="sidebar-item-icon fa fa-calendar"></i>
-                                <span class="nav-label">Calendar</span>
-                            </a>
-                        </li>*@
+            <a href="~/html/dist/calendar.html">
+                <i class="sidebar-item-icon fa fa-calendar"></i>
+                <span class="nav-label">Calendar</span>
+            </a>
+        </li>*@
                 </ul>
             </div>
         </nav>
@@ -202,17 +233,17 @@
     <script src="~/html/dist/assets/vendors/jquery/dist/jquery.js" type="text/javascript"></script>
     <script src="~/html/dist/assets/vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="~/html/dist/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/datatables.min.js"></script>
+    @*<script src="~/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/js/jquery.dataTables.min.js"></script>*@
     <script src="~/html/dist/assets/vendors/metisMenu/dist/metisMenu.min.js"></script>
     <script src="~/html/dist/assets/vendors/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- PAGE LEVEL PLUGINS-->
-    <script src="~/html/dist/assets/vendors/DataTables/datatables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.0.0/sweetalert.min.js"></script>
+    @*<script src="~/html/dist/assets/vendors/DataTables/datatables.min.js"></script>*@
     <!-- CORE SCRIPTS-->
     <script src="~/html/dist/assets/js/app.min.js"></script>
     <script src="~/js/moment.min.js"></script>
-    <script src="~/js/datatables.min.js"></script>
-    <script src="~/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/js/jquery.dataTables.min.js"></script>
+
     <!-- PAGE LEVEL SCRIPTS-->
     <script src="~/js/sweetalert2@9.js"></script>
     @RenderSection("Scripts", required: false)

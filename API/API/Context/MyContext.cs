@@ -16,19 +16,6 @@ namespace API.Context
         public DbSet<InterviewSchedule> InterviewSchedules { get; set; }
         public DbSet<Replacement> Replacements { get; set; }
         public DbSet<Placement> Placements { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-
-            builder.Entity<Replacement>()
-                .HasOne(ur => ur.Site)
-                .WithMany(b => b.Replacements)
-                .HasForeignKey(ur => ur.SiteId);
-
-
-            base.OnModelCreating(builder);
-        }
-
-
     }
 }
+

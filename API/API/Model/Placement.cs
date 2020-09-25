@@ -23,7 +23,5 @@ namespace API.Model
         public DateTimeOffset UpdateDate { get; set; }
         public DateTimeOffset DeleteData { get; set; }
         public bool isDelete { get; set; }
-
-        //public ICollection<Replacement> Replacements { get; set; }
     }
 }

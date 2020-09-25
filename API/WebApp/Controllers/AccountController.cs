@@ -68,8 +68,8 @@ namespace WebApp.Controllers
                         else if (account.RoleName != null)
                         {
                             HttpContext.Session.SetString("id", account.Id);
-                            HttpContext.Session.SetString("uname", account.name);
-                            HttpContext.Session.SetString("email", account.Email);
+                            //HttpContext.Session.SetString("uname", account.name);
+                            //HttpContext.Session.SetString("email", account.Email);
                             HttpContext.Session.SetString("lvl", account.RoleName);
                             //HttpContext.Session.SetInt32("joblist", account.Joblists);
                             if (account.RoleName == "HR")
@@ -101,8 +101,8 @@ namespace WebApp.Controllers
         public IActionResult LoadEmp()
         {
             IEnumerable<UserVM> emp = null;
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var resTask = client.GetAsync("users");
             resTask.Wait();
 
@@ -120,6 +120,27 @@ namespace WebApp.Controllers
             }
             return Json(emp);
 
+        }
+
+        public IActionResult GetById(string Id)
+        {
+            UserVM emp = null;
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
+            var resTask = client.GetAsync("users/" + Id);
+            resTask.Wait();
+
+            var result = resTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
+                emp = JsonConvert.DeserializeObject<UserVM>(json);
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Server Error.");
+            }
+            return Json(emp);
         }
     }
 }

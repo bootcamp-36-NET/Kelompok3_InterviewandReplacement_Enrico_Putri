@@ -1,11 +1,12 @@
-﻿using System;
+﻿using API.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.ViewModel
 {
-    public class InterviewVM
+    public class InterviewVM : BaseModel
     {
         public int Id { get; set; }
         public DateTime interview_date { get; set; }
@@ -16,5 +17,9 @@ namespace API.ViewModel
         public int siteId { get; set; }
         public int siteName { get; set; }
         public int siteSupName { get; set; }
+        public DateTimeOffset CreateData { get; set; }
+        public DateTimeOffset UpdateDate { get; set; }
+        public DateTimeOffset DeleteData { get; set; }
+        public bool isDelete { get; set; }
     }
 }

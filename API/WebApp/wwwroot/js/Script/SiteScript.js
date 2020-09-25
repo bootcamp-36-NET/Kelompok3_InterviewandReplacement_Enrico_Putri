@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿﻿$(document).ready(function () {
     //debugger;
     $('#ManageSite').DataTable({
         "processing": true,
@@ -6,7 +6,7 @@
         "pagination": true,
         "stateSave": true,
         "ajax": {
-            url: "/sites/LoadSite",
+            url: "/site/LoadSite",
             type: "GET",
             dataType: "json",
             dataSrc: "",
@@ -66,17 +66,19 @@ function ClearScreen() {
     $('#Id').val('');
     $('#SiteName').val('');
     $('#SupervisorName').val('');
+    $('#Address').val('');
+    $('#PhoneNumber').val('');
     $('#update').hide();
     $('#add').show();
 }
 
 function GetById(id) {
-  //  debugger;
+    debugger;
     $.ajax({
-        url: "/sites/GetById/",
+        url: "/site/GetById/",
         data: { id: id }
     }).then((result) => {
-     //   debugger;
+       debugger;
         $('#Id').val(result.id);
         $('#SiteName').val(result.name);
         $('#SupervisorName').val(result.supervisor_name);
@@ -89,7 +91,7 @@ function GetById(id) {
 }
 
 function Save() {
-  //  debugger;
+    debugger;
     var Site = new Object();
     Site.id = 0;
     Site.name = $('#SiteName').val();
@@ -99,12 +101,12 @@ function Save() {
     
     $.ajax({
         type: 'POST',
-        url: "/sites/InsertOrUpdate/",
+        url: "/site/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
         data: Site
     }).then((result) => {
-      //  debugger;
+        debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
@@ -122,7 +124,7 @@ function Save() {
 }
 
 function Update() {
-  //  debugger;
+      debugger;
     var Site = new Object();
     Site.id = $('#Id').val();
     Site.name = $('#SiteName').val();
@@ -131,12 +133,12 @@ function Update() {
     Site.phoneNumber = $('#PhoneNumber').val();
     $.ajax({
         type: 'POST',
-        url: "/sites/InsertOrUpdate/",
+        url: "/site/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
         data: Site
     }).then((result) => {
-       // debugger;
+         debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
@@ -153,7 +155,6 @@ function Update() {
     })
 }
 
-
 function Delete(id) {
     Swal.fire({
         title: 'Are you sure?',
@@ -166,7 +167,7 @@ function Delete(id) {
         if (resultSwal.value) {
             //debugger;
             $.ajax({
-                url: "/sites/Delete/",
+                url: "/site/Delete/",
                 data: { id: id }
             }).then((result) => {
                 //debugger;

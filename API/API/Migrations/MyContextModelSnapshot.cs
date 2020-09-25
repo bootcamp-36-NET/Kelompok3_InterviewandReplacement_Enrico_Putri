@@ -15,7 +15,7 @@ namespace API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
+                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -112,8 +112,6 @@ namespace API.Migrations
 
                     b.Property<string>("EmpId");
 
-                    b.Property<int>("PlacementId");
-
                     b.Property<string>("Replacement_reason");
 
                     b.Property<int>("SiteId");
@@ -123,8 +121,6 @@ namespace API.Migrations
                     b.Property<bool>("isDelete");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PlacementId");
 
                     b.HasIndex("SiteId");
 
@@ -181,13 +177,8 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Model.Replacement", b =>
                 {
-                    b.HasOne("API.Model.Placement", "Placement")
-                        .WithMany("Replacements")
-                        .HasForeignKey("PlacementId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("API.Model.Site", "Site")
-                        .WithMany("Replacements")
+                        .WithMany()
                         .HasForeignKey("SiteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
