@@ -22,5 +22,8 @@ namespace API.Model
         public DateTimeOffset UpdateDate { get; set; }
         public DateTimeOffset DeleteData { get; set; }
         public bool isDelete { get; set; }
+
+        public bool Reject { get; set; }
+        public bool Approve { get; set; }
     }
 }

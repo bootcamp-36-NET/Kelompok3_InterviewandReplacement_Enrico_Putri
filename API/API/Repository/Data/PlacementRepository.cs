@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace API.Repository.Data
 {
-    public class PlacementRepo : GeneralRepo<Placement, MyContext>
+    public class PlacementRepository : GeneralRepo<Placement, MyContext>
     {
         readonly MyContext _context;
         IConfiguration _configuration;
-        public PlacementRepo(MyContext context) : base(context)
+        public PlacementRepository(MyContext context) : base(context)
         {
             _context = context;
         }

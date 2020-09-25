@@ -12,10 +12,10 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlacementsController : BaseController<Placement, PlacementRepo>
+    public class PlacementsController : BaseController<Placement, PlacementRepository>
     {
-        readonly PlacementRepo _placementRepo;
-        public PlacementsController(PlacementRepo placementRepo) : base(placementRepo)
+        readonly PlacementRepository _placementRepo;
+        public PlacementsController(PlacementRepository placementRepo) : base(placementRepo)
         {
             _placementRepo = placementRepo;
         }

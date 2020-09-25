@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace API.Repository.Data
 {
-    public class InterviewSchedulesRepo : GeneralRepo<InterviewSchedule, MyContext>
+    public class InterviewSchedulesRepository : GeneralRepo<InterviewSchedule, MyContext>
     {
         readonly MyContext _context;
         IConfiguration _configuration;
-        public InterviewSchedulesRepo(MyContext context) : base(context)
+        public InterviewSchedulesRepository(MyContext context) : base(context)
         {
             _context = context;
         }

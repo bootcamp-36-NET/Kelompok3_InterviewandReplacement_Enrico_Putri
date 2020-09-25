@@ -15,10 +15,10 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InterviewSchedulesController : BaseController<InterviewSchedule, InterviewSchedulesRepo>
+    public class InterviewSchedulesController : BaseController<InterviewSchedule, InterviewSchedulesRepository>
     {
-        readonly InterviewSchedulesRepo _interviewscheduleRepo;
-        public InterviewSchedulesController(InterviewSchedulesRepo interviewSchedulesRepo) : base(interviewSchedulesRepo)
+        readonly InterviewSchedulesRepository _interviewscheduleRepo;
+        public InterviewSchedulesController(InterviewSchedulesRepository interviewSchedulesRepo) : base(interviewSchedulesRepo)
         {
             _interviewscheduleRepo = interviewSchedulesRepo;
         }
