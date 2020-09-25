@@ -102,7 +102,9 @@ $(document).ready(function () {
 
 function ClearScreen() {
     $('#Id').val('');
-    $('#Name').val('');
+    $('#EmployeeName').val('');
+    $('#Reason').val('');
+    $('#SiteOption').val('');
     $('#update').hide();
     $('#add').show();
 }
@@ -186,7 +188,10 @@ function GetById(id) {
     }).then((result) => {
         //debugger;
         $('#Id').val(result.id);
-        $('#Name').val(result.name);
+        $('#EmployeeOption').val(result.empId);
+        $('#PlacementDate').val(result.placementDate);
+        $('#PlacementEndDate').val(result.placementEndDate);
+        $('#SiteOption').val(result.siteId);
         $('#add').hide();
         $('#update').show();
         $('#myModal').modal('show');
@@ -196,7 +201,7 @@ function GetById(id) {
 function Save() {
     debugger;
     var placement = new Object();
-    placement.Id = 0;
+    placement.id = 0;
     placement.empId = $('#EmployeeOption').val();
     placement.placementDate = $('#placementdate').val();
     placement.placementEndDate = $('#placementenddate').val();
@@ -226,18 +231,21 @@ function Save() {
 }
 
 function Update() {
-    //debugger;
-    var Dept = new Object();
-    Dept.Id = $('#Id').val();
-    Dept.Name = $('#Name').val();
+    debugger;
+    var placement = new Object();
+    placement.id = $('#Id').val();
+    placement.empId = $('#EmployeeOption').val();
+    placement.placementDate = $('#placementdate').val();
+    placement.placementEndDate = $('#placementenddate').val();
+    placement.siteId = $('#SiteOption').val();
     $.ajax({
         type: 'POST',
         url: "/placement/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
-        data: Dept
+        data: placement
     }).then((result) => {
-        //debugger;
+        debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',

@@ -209,14 +209,17 @@ function renderSite(element) {
 LoadSite($('#SiteOption'))
 
 function GetById(id) {
-    //debugger;
+    debugger;
     $.ajax({
         url: "/interviewschedule/GetById/",
         data: { id: id }
     }).then((result) => {
         //debugger;
         $('#Id').val(result.id);
-        $('#Name').val(result.name);
+        $('#interviewdate').val(result.interview_date);
+        $('#EmployeeOption').val(result.empId);
+        $('#JoblistOption').val(result.joblistId);
+        $('#SiteOption').val(result.siteId);
         $('#add').hide();
         $('#update').show();
         $('#myModal').modal('show');
@@ -256,16 +259,19 @@ function Save() {
 }
 
 function Update() {
-    //debugger;
-    var Dept = new Object();
-    Dept.Id = $('#Id').val();
-    Dept.Name = $('#Name').val();
+    debugger;
+    var InterviewSchedule = new Object();
+    InterviewSchedule.Id = $('#Id').val();
+    InterviewSchedule.interview_date = $('#interviewdate').val();
+    InterviewSchedule.empId = $('#EmployeeOption').val();
+    InterviewSchedule.joblistId = $('#JoblistOption').val();
+    InterviewSchedule.siteId = $('#SiteOption').val();
     $.ajax({
         type: 'POST',
         url: "/interviewschedule/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
-        data: Dept
+        data: InterviewSchedule
     }).then((result) => {
         //debugger;
         if (result.statusCode == 200) {

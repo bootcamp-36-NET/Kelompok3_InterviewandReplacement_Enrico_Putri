@@ -50,8 +50,8 @@ namespace WebApp.Controllers
         public IActionResult GetById(int Id)
         {
             Site site = null;
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var resTask = client.GetAsync("sites/" + Id);
             resTask.Wait();
             HttpContext.Session.SetInt32("sites", Id);
@@ -77,8 +77,8 @@ namespace WebApp.Controllers
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                //var token = HttpContext.Session.GetString("token");
-                //client.DefaultRequestHeaders.Add("Authorization", token);
+                var token = HttpContext.Session.GetString("token");
+                client.DefaultRequestHeaders.Add("Authorization", token);
                 if (site.Id == 0)
                 {
                     var result = client.PostAsync("sites", byteContent).Result;
@@ -100,8 +100,8 @@ namespace WebApp.Controllers
 
         public IActionResult Delete(int id)
         {
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var result = client.DeleteAsync("sites/" + id).Result;
             return Json(result);
         }

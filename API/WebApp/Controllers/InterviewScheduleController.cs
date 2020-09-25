@@ -51,8 +51,8 @@ namespace WebApp.Controllers
         public IActionResult GetById(int Id)
         {
             InterviewSchedule interviewSchedule = null;
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var resTask = client.GetAsync("interviewschedules/" + Id);
             resTask.Wait();
             HttpContext.Session.SetInt32("interviewschedules", Id);
@@ -78,8 +78,8 @@ namespace WebApp.Controllers
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                //var token = HttpContext.Session.GetString("token");
-                //client.DefaultRequestHeaders.Add("Authorization", token);
+                var token = HttpContext.Session.GetString("token");
+                client.DefaultRequestHeaders.Add("Authorization", token);
                 if (interviewSchedule.Id == 0)
                 {
                     var result = client.PostAsync("interviewschedules", byteContent).Result;
@@ -101,8 +101,8 @@ namespace WebApp.Controllers
 
         public IActionResult Delete(int id)
         {
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var result = client.DeleteAsync("interviewschedules/" + id).Result;
             return Json(result);
         }

@@ -110,7 +110,7 @@ function Save() {
 }
 
 function Update() {
-    //debugger;
+    debugger;
     var Dept = new Object();
     Dept.Id = $('#Id').val();
     Dept.Name = $('#Name').val();
@@ -121,7 +121,7 @@ function Update() {
         dataType: "JSON",
         data: Dept
     }).then((result) => {
-        //debugger;
+        debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',

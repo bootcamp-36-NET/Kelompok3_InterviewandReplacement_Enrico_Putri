@@ -1,12 +1,12 @@
-﻿$(document).ready(function () {
-    debugger;
-    $('#ManageSites').DataTable({
+﻿﻿$(document).ready(function () {
+    //debugger;
+    $('#ManageSite').DataTable({
         "processing": true,
         "responsive": true,
         "pagination": true,
         "stateSave": true,
         "ajax": {
-            url: "/site/loadsite",
+            url: "/site/LoadSite",
             type: "GET",
             dataType: "json",
             dataSrc: "",
@@ -20,6 +20,9 @@
                 }
             },
             { "data": "name" },
+            { "data": "supervisor_name" },
+            { "data": "address" },
+            { "data": "phoneNumber" },
             //{
             //    "data": "createData",
             //    'render': function (jsonDate) {
@@ -46,8 +49,9 @@
             //},
             {
                 "sortable": false,
-                "render": function (data, type, row) {
-                    //console.log(row);
+                "render": function (data, type, row, meta) {
+                    console.log(row);
+                    console.log(data);
                     $('[data-toggle="tooltip"]').tooltip();
                     return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ><i class="fa fa-lg fa-edit"></i></button>'
                         + '&nbsp;'
@@ -60,20 +64,26 @@
 
 function ClearScreen() {
     $('#Id').val('');
-    $('#Name').val('');
+    $('#SiteName').val('');
+    $('#SupervisorName').val('');
+    $('#Address').val('');
+    $('#PhoneNumber').val('');
     $('#update').hide();
     $('#add').show();
 }
 
 function GetById(id) {
-    //debugger;
+    debugger;
     $.ajax({
-        url: "/Joblists/GetById/",
+        url: "/site/GetById/",
         data: { id: id }
     }).then((result) => {
-        //debugger;
+       debugger;
         $('#Id').val(result.id);
-        $('#Name').val(result.name);
+        $('#SiteName').val(result.name);
+        $('#SupervisorName').val(result.supervisor_name);
+        $('#Address').val(result.address);
+        $('#PhoneNumber').val(result.phoneNumber);
         $('#add').hide();
         $('#update').show();
         $('#myModal').modal('show');
@@ -81,18 +91,22 @@ function GetById(id) {
 }
 
 function Save() {
-    //debugger;
-    var Dept = new Object();
-    Dept.Id = 0;
-    Dept.Name = $('#Name').val();
+    debugger;
+    var Site = new Object();
+    Site.id = 0;
+    Site.name = $('#SiteName').val();
+    Site.supervisor_name = $('#SupervisorName').val();
+    Site.address = $('#Address').val();
+    Site.phoneNumber = $('#PhoneNumber').val();
+    
     $.ajax({
         type: 'POST',
-        url: "/Joblists/InsertOrUpdate/",
+        url: "/site/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
-        data: Dept
+        data: Site
     }).then((result) => {
-        //debugger;
+        debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
@@ -110,18 +124,21 @@ function Save() {
 }
 
 function Update() {
-    //debugger;
-    var Dept = new Object();
-    Dept.Id = $('#Id').val();
-    Dept.Name = $('#Name').val();
+      debugger;
+    var Site = new Object();
+    Site.id = $('#Id').val();
+    Site.name = $('#SiteName').val();
+    Site.supervisor_name = $('#SupervisorName').val();
+    Site.address = $('#Address').val();
+    Site.phoneNumber = $('#PhoneNumber').val();
     $.ajax({
         type: 'POST',
-        url: "/Joblists/InsertOrUpdate/",
+        url: "/site/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
-        data: Dept
+        data: Site
     }).then((result) => {
-        //debugger;
+         debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
@@ -138,7 +155,6 @@ function Update() {
     })
 }
 
-
 function Delete(id) {
     Swal.fire({
         title: 'Are you sure?',
@@ -151,7 +167,7 @@ function Delete(id) {
         if (resultSwal.value) {
             //debugger;
             $.ajax({
-                url: "/Joblists/Delete/",
+                url: "/site/Delete/",
                 data: { id: id }
             }).then((result) => {
                 //debugger;

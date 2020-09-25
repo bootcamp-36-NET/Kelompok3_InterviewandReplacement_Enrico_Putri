@@ -101,7 +101,9 @@ $(document).ready(function () {
 
 function ClearScreen() {
     $('#Id').val('');
-    $('#Name').val('');
+    $('#EmployeeOption').val('');
+    $('#Reason').val('');
+    $('#SiteOption').val('');
     $('#update').hide();
     $('#add').show();
 }
@@ -178,14 +180,16 @@ function renderSite(element) {
 LoadSite($('#SiteOption'))
 
 function GetById(id) {
-    //debugger;
+    debugger;
     $.ajax({
         url: "/Replacement/GetById/",
         data: { id: id }
     }).then((result) => {
-        //debugger;
+       debugger;
         $('#Id').val(result.id);
-        $('#Name').val(result.name);
+        $('#EmployeeOption').val(result.empId);
+        $('#Reason').val(result.replacement_reason);
+        $('#SiteOption').val(result.siteId);
         $('#add').hide();
         $('#update').show();
         $('#myModal').modal('show');
@@ -195,7 +199,7 @@ function GetById(id) {
 function Save() {
     debugger;
     var replacement = new Object();
-    replacement.Id = 0;
+    replacement.id= 0;
     replacement.empId = $('#EmployeeOption').val();
     replacement.siteId = $('#SiteOption').val();
     replacement.replacement_reason = $('#replacement_reason').val();
@@ -224,18 +228,20 @@ function Save() {
 }
 
 function Update() {
-    //debugger;
-    var Dept = new Object();
-    Dept.Id = $('#Id').val();
-    Dept.Name = $('#Name').val();
+    debugger;
+    var replacement = new Object();
+    replacement.id= $('#Id').val();
+    replacement.empId = $('#EmployeeOption').val();
+    replacement.siteId = $('#SiteOption').val();
+    replacement.replacement_reason = $('#replacement_reason').val();
     $.ajax({
         type: 'POST',
         url: "/Replacement/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
-        data: Dept
+        data: replacement
     }).then((result) => {
-        //debugger;
+       debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',

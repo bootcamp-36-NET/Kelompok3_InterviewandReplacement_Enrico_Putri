@@ -22,11 +22,11 @@ namespace WebApp.Controllers
         {
             return View();
         }
-        public IActionResult LoadSite()
+        public IActionResult LoadJoblist()
         {
             IEnumerable<Joblist> joblists = null;
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var resTask = client.GetAsync("joblists");
             resTask.Wait();
 
@@ -49,8 +49,8 @@ namespace WebApp.Controllers
         public IActionResult GetById(int Id)
         {
             Joblist joblist = null;
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var resTask = client.GetAsync("joblists/" + Id);
             resTask.Wait();
             HttpContext.Session.SetInt32("joblists", Id);
@@ -76,8 +76,8 @@ namespace WebApp.Controllers
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                //var token = HttpContext.Session.GetString("token");
-                //client.DefaultRequestHeaders.Add("Authorization", token);
+                var token = HttpContext.Session.GetString("token");
+                client.DefaultRequestHeaders.Add("Authorization", token);
                 if (joblist.Id == 0)
                 {
                     var result = client.PostAsync("joblists", byteContent).Result;
@@ -99,8 +99,8 @@ namespace WebApp.Controllers
 
         public IActionResult Delete(int id)
         {
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var result = client.DeleteAsync("joblists/" + id).Result;
             return Json(result);
         }
