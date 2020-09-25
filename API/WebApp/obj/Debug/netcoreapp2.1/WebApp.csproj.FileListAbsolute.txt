@@ -38,3 +38,5 @@ C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Layo
 C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Joblists\Index.g.cshtml.cs
 C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\InterviewSchedule\Index.g.cshtml.cs
 C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Replacement\Index.g.cshtml.cs
+C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Placement\Index.g.cshtml.cs
+C:\Users\Enrico\source\repos\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Site\Index.g.cshtml.cs

@@ -22,7 +22,7 @@ namespace WebApp.Controllers
         {
             return View();
         }
-        public IActionResult LoadJoblist()
+        public IActionResult LoadSite()
         {
             IEnumerable<Joblist> joblists = null;
             //var token = HttpContext.Session.GetString("token");

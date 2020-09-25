@@ -23,20 +23,8 @@
                             <input type="text" id="Id" name="Id" class="form-control" hidden>
                             <div class="col-sm-12">
                                 <div class="form-group form-group-default">
-                                    <label>Employee</label>
-                                    <select class="form-control" id="EmployeeOption" name="EmployeeOption"></select>
-                                </div>
-                                <div class="form-group form-group-default">
-                                    <label>Placement Date</label>
-                                    <input type="datetime-local" id="placementdate" name="placementdate" class="form-control" placeholder="Pick Date">
-                                </div>
-                                <div class="form-group form-group-default">
-                                    <label>Placement End Date</label>
-                                    <input type="datetime-local" id="placementenddate" name="placementdate" class="form-control" placeholder="Pick Date">
-                                </div>
-                                <div class="form-group form-group-default">
-                                    <label>Site</label>
-                                    <select class="form-control" id="SiteOption" name="SiteOption"></select>
+                                    <label>Job Title</label>
+                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="fill Job Title">
                                 </div>
                             </div>
                         </div>
@@ -53,7 +41,7 @@
 
 
     <div class="page-heading">
-        <h1 class="page-title">Manage Placement</h1>
+        <h1 class="page-title">Manage Job List</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="/"><i class="la la-home font-20"></i></a>
@@ -72,14 +60,12 @@
                 </div>*@
             <div class="ibox-body">
 
-                <table class="table table-striped table-bordered table-hover" id="Placements" cellspacing="0" width="100%">
+                <table class="table table-striped table-bordered table-hover" id="ManageSites" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Employee</th>
-                            <th>Placement Date</th>
-                            <th>Placement End Date</th>
                             <th>Site</th>
+                            <th>Supervisor Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -91,7 +77,6 @@
 </div>
 
 @section Scripts{
-    <script src="~/js/Script/PlacementScript.js"></script>
+    <script src="~/js/Script/SiteScript.js"></script>
     <script src="~/js/sweetalert2@9.js"></script>
 }
-

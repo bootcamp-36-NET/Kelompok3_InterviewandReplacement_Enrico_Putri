@@ -1,16 +1,12 @@
-﻿var arrEmployee = [];
-var arrSite = [];
-var table = null;
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     debugger;
-    table = $('#Placements').DataTable({
+    $('#ManageSites').DataTable({
         "processing": true,
         "responsive": true,
         "pagination": true,
         "stateSave": true,
         "ajax": {
-            url: "/placement/LoadPlacement",
+            url: "/site/loadsite",
             type: "GET",
             dataType: "json",
             dataSrc: "",
@@ -23,19 +19,7 @@ $(document).ready(function () {
                     //return meta.row + 1;
                 }
             },
-            {
-                "data": "empId"
-                //"className": "getIdEmp",
-                //render: function (data, type, row, meta) {
-                //    debugger;
-                //    var getid = row.empId;
-                //    console.log(getid);
-                //    //cekGetId(getid);
-                //}
-            },
-            { "data": "placementDate" },
-            { "data": "placementEndDate" },
-            { "data": "site.name" },
+            { "data": "name" },
             //{
             //    "data": "createData",
             //    'render': function (jsonDate) {
@@ -70,33 +54,7 @@ $(document).ready(function () {
                         + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ><i class="fa fa-lg fa-times"></i></button>'
                 }
             }
-        ],
-        //initComplete: function () {
-        //    this.api().rows().every(function (rowIdx, tableLoop, rowLoop) {
-        //        debugger;
-        //        var rid = rowIdx;
-        //        var tl = tableLoop;
-        //        var rl = rowLoop;
-        //cekGetId(rowLoop);
-        //var column = this;
-        //var select = $('<select><option value="">Department All</option></select>')
-        //    .appendTo($(column.header()).empty())
-        //    .on('change', function () {
-        //        var val = $.fn.dataTable.util.escapeRegex(
-        //            $(this).val()
-        //        );
-
-        //        column
-        //            .search(val ? '^' + val + '$' : '', true, false)
-        //            .draw();
-        //    });
-
-        //this.data().each(function (d, j) {
-        //    debugger;
-        //    $('.getIdEmp').append('<td>' + d + '</td>')
-        //});
-        //    });
-        //}
+        ]
     });
 });
 
@@ -107,81 +65,10 @@ function ClearScreen() {
     $('#add').show();
 }
 
-function cekGetId(empId) {
-    debugger;
-    //var id = table.row(empId).data().empId;
-    $.ajax({
-        url: "/account/GetById/",
-        data: { id: empId },
-        success: function (data) {
-            $(".getIdEmp").val(data.name);
-        }
-    })
-}
-//cekGetId("emp001");
-
-//load employee
-function LoadEmp(element) {
-    //debugger;
-    if (arrEmployee.length === 0) {
-        $.ajax({
-            type: "Get",
-            url: "/account/LoadEmp",
-            success: function (data) {
-                arrEmployee = data;
-                renderEmp(element);
-            }
-        });
-    }
-    else {
-        renderEmp(element);
-    }
-}
-
-function renderEmp(element) {
-    var $option = $(element);
-    $option.empty();
-    $option.append($('<option/>').val('0').text('Select Employee').hide());
-    $.each(arrEmployee, function (i, val) {
-        $option.append($('<option/>').val(val.id).text(val.name))
-    });
-}
-
-LoadEmp($('#EmployeeOption'))
-
-//Load Site
-function LoadSite(element) {
-    //debugger;
-    if (arrSite.length === 0) {
-        $.ajax({
-            type: "Get",
-            url: "/site/LoadSite",
-            success: function (data) {
-                arrSite = data;
-                renderSite(element);
-            }
-        });
-    }
-    else {
-        renderSite(element);
-    }
-}
-
-function renderSite(element) {
-    var $option = $(element);
-    $option.empty();
-    $option.append($('<option/>').val('0').text('Select Site').hide());
-    $.each(arrSite, function (i, val) {
-        $option.append($('<option/>').val(val.id).text(val.name))
-    });
-}
-
-LoadSite($('#SiteOption'))
-
 function GetById(id) {
     //debugger;
     $.ajax({
-        url: "/placement/GetById/",
+        url: "/Joblists/GetById/",
         data: { id: id }
     }).then((result) => {
         //debugger;
@@ -194,19 +81,16 @@ function GetById(id) {
 }
 
 function Save() {
-    debugger;
-    var placement = new Object();
-    placement.Id = 0;
-    placement.empId = $('#EmployeeOption').val();
-    placement.placementDate = $('#placementdate').val();
-    placement.placementEndDate = $('#placementenddate').val();
-    placement.siteId = $('#SiteOption').val();
+    //debugger;
+    var Dept = new Object();
+    Dept.Id = 0;
+    Dept.Name = $('#Name').val();
     $.ajax({
         type: 'POST',
-        url: "/placement/InsertOrUpdate/",
+        url: "/Joblists/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
-        data: placement
+        data: Dept
     }).then((result) => {
         //debugger;
         if (result.statusCode == 200) {
@@ -232,7 +116,7 @@ function Update() {
     Dept.Name = $('#Name').val();
     $.ajax({
         type: 'POST',
-        url: "/placement/InsertOrUpdate/",
+        url: "/Joblists/InsertOrUpdate/",
         cache: false,
         dataType: "JSON",
         data: Dept
@@ -267,7 +151,7 @@ function Delete(id) {
         if (resultSwal.value) {
             //debugger;
             $.ajax({
-                url: "/placement/Delete/",
+                url: "/Joblists/Delete/",
                 data: { id: id }
             }).then((result) => {
                 //debugger;
