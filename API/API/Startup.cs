@@ -30,11 +30,11 @@ namespace API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
-            services.AddScoped<JoblistRepo>();
+            services.AddScoped<JoblistRepository>();
             services.AddScoped<SiteRepository>();
-            services.AddScoped<InterviewSchedulesRepo>();
-            services.AddScoped<ReplacementRepo>();
-            services.AddScoped<PlacementRepo>();
+            services.AddScoped<InterviewSchedulesRepository>();
+            services.AddScoped<ReplacementRepository>();
+            services.AddScoped<PlacementRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

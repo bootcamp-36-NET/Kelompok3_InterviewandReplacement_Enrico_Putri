@@ -39,3 +39,29 @@ F:\program\belajar .NET\API\API\obj\Debug\netcoreapp2.1\API.AssemblyInfo.cs
 F:\program\belajar .NET\API\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
 F:\program\belajar .NET\API\API\obj\Debug\netcoreapp2.1\API.dll
 F:\program\belajar .NET\API\API\obj\Debug\netcoreapp2.1\API.pdb
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\bin\Debug\netcoreapp2.1\API.deps.json
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\bin\Debug\netcoreapp2.1\API.runtimeconfig.json
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\bin\Debug\netcoreapp2.1\API.runtimeconfig.dev.json
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\bin\Debug\netcoreapp2.1\API.dll
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\bin\Debug\netcoreapp2.1\API.pdb
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\obj\Debug\netcoreapp2.1\API.csproj.CoreCompileInputs.cache
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cache
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cs
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\obj\Debug\netcoreapp2.1\API.AssemblyInfoInputs.cache
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\obj\Debug\netcoreapp2.1\API.AssemblyInfo.cs
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\obj\Debug\netcoreapp2.1\API.dll
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\fix sementara Puji Tuhan\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\API\API\obj\Debug\netcoreapp2.1\API.pdb
+F:\program\API\API\bin\Debug\netcoreapp2.1\API.deps.json
+F:\program\API\API\bin\Debug\netcoreapp2.1\API.runtimeconfig.json
+F:\program\API\API\bin\Debug\netcoreapp2.1\API.runtimeconfig.dev.json
+F:\program\API\API\bin\Debug\netcoreapp2.1\API.dll
+F:\program\API\API\bin\Debug\netcoreapp2.1\API.pdb
+F:\program\API\API\obj\Debug\netcoreapp2.1\API.csproj.CoreCompileInputs.cache
+F:\program\API\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cache
+F:\program\API\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cs
+F:\program\API\API\obj\Debug\netcoreapp2.1\API.AssemblyInfoInputs.cache
+F:\program\API\API\obj\Debug\netcoreapp2.1\API.AssemblyInfo.cs
+F:\program\API\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
+F:\program\API\API\obj\Debug\netcoreapp2.1\API.dll
+F:\program\API\API\obj\Debug\netcoreapp2.1\API.pdb

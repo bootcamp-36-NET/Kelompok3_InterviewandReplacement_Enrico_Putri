@@ -21,7 +21,16 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.IsAvailable)
+            {
+                if (HttpContext.Session.GetString("lvl") == "Admin")
+                {
+                    return View();
+                }
+                return Redirect("/interviewscheduleemp");
+            }
+            return Redirect("/Error");
+            
         }
 
         public IActionResult LoadInterviewSchedule()

@@ -9,18 +9,21 @@ using API.Repository.Data;
 using API.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InterviewSchedulesController : BaseController<InterviewSchedule, InterviewSchedulesRepo>
+    public class InterviewSchedulesController : BaseController<InterviewSchedule, InterviewSchedulesRepository>
     {
-        readonly InterviewSchedulesRepo _interviewscheduleRepo;
-        public InterviewSchedulesController(InterviewSchedulesRepo interviewSchedulesRepo) : base(interviewSchedulesRepo)
+        readonly InterviewSchedulesRepository _interviewscheduleRepo;
+        readonly MyContext _context;
+        public InterviewSchedulesController(InterviewSchedulesRepository interviewSchedulesRepo, MyContext context) : base(interviewSchedulesRepo)
         {
             _interviewscheduleRepo = interviewSchedulesRepo;
+            _context = context;
         }
 
         [HttpPut("{id}")]
@@ -37,6 +40,31 @@ namespace API.Controllers
                 return BadRequest("Data is not Update");
             }
             return Ok("Update Successfull");
+        }
+
+        //[HttpGet]
+        //[Route("empId/{id}")]
+        //public async Task<ActionResult<string>> GetIDEmp(string id)
+        //{
+        //    var data = await _interviewscheduleRepo.GetEmpID(id);
+        //    if (data.Equals(null))
+        //    {
+        //        return BadRequest("Data is not Update");
+        //    }
+        //    //return data;
+        //    return Ok("Successfull");
+        //}
+
+        [HttpGet]
+        [Route("empId/{id}")]
+        public async Task<List<InterviewSchedule>> GetIDEmp(string id)
+        {
+            var getData = await _context.InterviewSchedules.Include("Joblist").Include("Site").Where(x => x.EmpId == id).ToListAsync();
+            if (getData == null)
+            {
+                return null;
+            }
+            return getData;
         }
     }
 }

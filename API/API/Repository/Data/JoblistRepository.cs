@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace API.Repository.Data
 {
-    public class JoblistRepo : GeneralRepo<Joblist, MyContext>
+    public class JoblistRepository : GeneralRepo<Joblist, MyContext>
     {
-        public JoblistRepo(MyContext context) : base(context)
+        public JoblistRepository(MyContext context) : base(context)
         {
 
         }

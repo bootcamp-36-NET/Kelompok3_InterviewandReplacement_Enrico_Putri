@@ -12,10 +12,10 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class JoblistsController : BaseController<Joblist, JoblistRepo>
+    public class JoblistsController : BaseController<Joblist, JoblistRepository>
     {
-        readonly JoblistRepo _joblistRepo;
-        public JoblistsController(JoblistRepo joblistRepo) : base(joblistRepo)
+        readonly JoblistRepository _joblistRepo;
+        public JoblistsController(JoblistRepository joblistRepo) : base(joblistRepo)
         {
             _joblistRepo = joblistRepo;
         }

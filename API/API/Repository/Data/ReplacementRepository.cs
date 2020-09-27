@@ -10,34 +10,36 @@ using System.Threading.Tasks;
 
 namespace API.Repository.Data
 {
-    public class PlacementRepo : GeneralRepo<Placement, MyContext>
+    public class ReplacementRepository : GeneralRepo<Replacement, MyContext>
     {
         readonly MyContext _context;
         IConfiguration _configuration;
-        public PlacementRepo(MyContext context) : base(context)
+        public ReplacementRepository(MyContext context) : base(context)
         {
             _context = context;
         }
 
-        public override async Task<int> Create(Placement placement)
+        public override async Task<int> Create(Replacement replacement)
         {
             //interviewSchedule.empId = interviewSchedule.empId;
-            placement.CreateData = DateTimeOffset.Now;
-            placement.isDelete = false;
-            await _context.Set<Placement>().AddAsync(placement);
+            replacement.CreateData = DateTimeOffset.Now;
+            replacement.isDelete = false;
+            await _context.Set<Replacement>().AddAsync(replacement);
             var createItem = await _context.SaveChangesAsync();
             return createItem;
         }
 
-        public override async Task<List<Placement>> GetAll()
+        public override async Task<List<Replacement>> GetAll()
         {
-            List<PlacementVM> list = new List<PlacementVM>();
-            var data = await _context.Placements.Include("Site").Where(x => x.isDelete == false).ToListAsync();
+            List<ReplacementVM> list = new List<ReplacementVM>();
+            var data = await _context.Replacements.Include("Site").Where(x => x.isDelete == false).ToListAsync();
             if (data.Count == 0)
             {
                 return null;
             }
             return data;
         }
+
+       
     }
 }

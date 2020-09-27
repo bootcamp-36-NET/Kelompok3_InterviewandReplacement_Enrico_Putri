@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\program\\belajar .NET\\API\\API\\API.csproj": {}
+    "F:\\program\\API\\API\\API.csproj": {}
   },
   "projects": {
-    "F:\\program\\belajar .NET\\API\\API\\API.csproj": {
+    "F:\\program\\API\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\program\\belajar .NET\\API\\API\\API.csproj",
+        "projectUniqueName": "F:\\program\\API\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "F:\\program\\belajar .NET\\API\\API\\API.csproj",
+        "projectPath": "F:\\program\\API\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-        "outputPath": "F:\\program\\belajar .NET\\API\\API\\obj\\",
+        "outputPath": "F:\\program\\API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

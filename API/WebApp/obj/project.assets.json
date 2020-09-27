@@ -12562,11 +12562,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\program\\belajar .NET\\API\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "F:\\program\\API\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "F:\\program\\belajar .NET\\API\\WebApp\\WebApp.csproj",
+      "projectPath": "F:\\program\\API\\WebApp\\WebApp.csproj",
       "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-      "outputPath": "F:\\program\\belajar .NET\\API\\WebApp\\obj\\",
+      "outputPath": "F:\\program\\API\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12585,8 +12585,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "F:\\program\\belajar .NET\\API\\API\\API.csproj": {
-              "projectPath": "F:\\program\\belajar .NET\\API\\API\\API.csproj"
+            "F:\\program\\API\\API\\API.csproj": {
+              "projectPath": "F:\\program\\API\\API\\API.csproj"
             }
           }
         }

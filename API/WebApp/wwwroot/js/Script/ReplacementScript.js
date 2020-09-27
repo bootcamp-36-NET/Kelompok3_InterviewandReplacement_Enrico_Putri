@@ -102,8 +102,8 @@ $(document).ready(function () {
 function ClearScreen() {
     $('#Id').val('');
     $('#EmployeeOption').val('');
-    $('#Reason').val('');
     $('#SiteOption').val('');
+    $('#replacement_reason').val('');
     $('#update').hide();
     $('#add').show();
 }
@@ -188,7 +188,7 @@ function GetById(id) {
        debugger;
         $('#Id').val(result.id);
         $('#EmployeeOption').val(result.empId);
-        $('#Reason').val(result.replacement_reason);
+        $('#replacement_reason').val(result.replacement_reason);
         $('#SiteOption').val(result.siteId);
         $('#add').hide();
         $('#update').show();

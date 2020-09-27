@@ -10,29 +10,29 @@ using System.Threading.Tasks;
 
 namespace API.Repository.Data
 {
-    public class ReplacementRepo : GeneralRepo<Replacement, MyContext>
+    public class PlacementRepository : GeneralRepo<Placement, MyContext>
     {
         readonly MyContext _context;
         IConfiguration _configuration;
-        public ReplacementRepo(MyContext context) : base(context)
+        public PlacementRepository(MyContext context) : base(context)
         {
             _context = context;
         }
 
-        public override async Task<int> Create(Replacement replacement)
+        public override async Task<int> Create(Placement placement)
         {
             //interviewSchedule.empId = interviewSchedule.empId;
-            replacement.CreateData = DateTimeOffset.Now;
-            replacement.isDelete = false;
-            await _context.Set<Replacement>().AddAsync(replacement);
+            placement.CreateData = DateTimeOffset.Now;
+            placement.isDelete = false;
+            await _context.Set<Placement>().AddAsync(placement);
             var createItem = await _context.SaveChangesAsync();
             return createItem;
         }
 
-        public override async Task<List<Replacement>> GetAll()
+        public override async Task<List<Placement>> GetAll()
         {
-            List<ReplacementVM> list = new List<ReplacementVM>();
-            var data = await _context.Replacements.Include("Site").Where(x => x.isDelete == false).ToListAsync();
+            List<PlacementVM> list = new List<PlacementVM>();
+            var data = await _context.Placements.Include("Site").Where(x => x.isDelete == false).ToListAsync();
             if (data.Count == 0)
             {
                 return null;

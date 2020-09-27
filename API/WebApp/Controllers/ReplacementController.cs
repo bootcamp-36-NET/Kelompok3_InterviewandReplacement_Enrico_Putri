@@ -50,11 +50,12 @@ namespace WebApp.Controllers
         public IActionResult GetById(int Id)
         {
             Replacement replacement = null;
-            //var token = HttpContext.Session.GetString("token");
-            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
             var resTask = client.GetAsync("Replacements/" + Id);
             resTask.Wait();
             HttpContext.Session.SetInt32("Replacements", Id);
+            HttpContext.Session.SetString("Approve", replacement.Approve.ToString());
             var result = resTask.Result;
             if (result.IsSuccessStatusCode)
             {

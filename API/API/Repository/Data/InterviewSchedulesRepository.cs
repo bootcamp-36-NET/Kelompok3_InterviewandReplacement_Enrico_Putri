@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace API.Repository.Data
 {
-    public class InterviewSchedulesRepo : GeneralRepo<InterviewSchedule, MyContext>
+    public class InterviewSchedulesRepository : GeneralRepo<InterviewSchedule, MyContext>
     {
         readonly MyContext _context;
         IConfiguration _configuration;
-        public InterviewSchedulesRepo(MyContext context) : base(context)
+        public InterviewSchedulesRepository(MyContext context) : base(context)
         {
             _context = context;
         }
@@ -40,6 +40,15 @@ namespace API.Repository.Data
             return data;
         }
 
+        public async Task<Replacement> GetEmpID(string Id)
+        {
+            var data = await _context.Set<Replacement>().SingleOrDefaultAsync(x => x.EmpId == Id && x.isDelete == false);
+            if (!data.Equals(0))
+            {
+                return data;
+            }
+            return null;
+        }
         //public override async Task<InterviewSchedule> GetID(int Id)
         //{
         //    var data = await _context.InterviewSchedules.Include("joblist").Include("site").SingleOrDefaultAsync(x => x.Id == Id && x.isDelete == false);
