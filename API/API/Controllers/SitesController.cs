@@ -28,6 +28,7 @@ namespace API.Controllers
             getId.Name = entity.Name;
             getId.PhoneNumber = entity.PhoneNumber;
             getId.Supervisor_name = entity.Supervisor_name;
+            getId.Address = entity.Address;
             var data = await _siteRepository.Update(getId);
             if (data.Equals(null))
             {

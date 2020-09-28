@@ -5,7 +5,7 @@ var table = null;
 
 $(document).ready(function () {
     //debugger;
-    table = $('#ManageJoblists').DataTable({
+    table = $('#ManageInterview').DataTable({
         "processing": true,
         "responsive": true,
         "pagination": true,

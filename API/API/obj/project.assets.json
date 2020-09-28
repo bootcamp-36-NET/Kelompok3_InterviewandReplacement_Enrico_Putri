@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\fix sementara Puji Tuhan\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Cornelia Putri\\Downloads\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\fix sementara Puji Tuhan\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj",
+      "projectPath": "C:\\Users\\Cornelia Putri\\Downloads\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Cornelia Putri\\.nuget\\packages\\",
-      "outputPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\fix sementara Puji Tuhan\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\obj\\",
+      "outputPath": "C:\\Users\\Cornelia Putri\\Downloads\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

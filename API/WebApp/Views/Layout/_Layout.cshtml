@@ -17,12 +17,12 @@
     <link href="~/html/dist/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/html/dist/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/html/dist/assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
-    <link href="~/css/Style.css" rel="stylesheet" />
     <!-- PLUGINS STYLES-->
     <link href="~/html/dist/assets/vendors/DataTables/datatables.min.css" rel="stylesheet" />
     <!-- THEME STYLES-->
     <link href="~/html/dist/assets/css/main.min.css" rel="stylesheet" />
     <!-- PAGE LEVEL STYLES-->
+    @*<link href="~/css/Style.css" rel="stylesheet" />*@
 </head>
 <body class="fixed-navbar">
     <div class="page-wrapper">
@@ -184,7 +184,7 @@
                         <li>
                             <a href="javascript:;">
                                 <i class="sidebar-item-icon fa ti-share"></i>
-                                <span class="nav-label">Replcament</span><i class="fa fa-angle-left arrow"></i>
+                                <span class="nav-label">Replacement</span><i class="fa fa-angle-left arrow"></i>
                             </a>
                             <ul class="nav-2-level collapse">
                                 <li>
@@ -203,6 +203,42 @@
                     </li>
                 </ul>
             </li>*@
+                    }
+                    else if(level == "Employee")
+                    {
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa fa-calendar"></i>
+                                <span class="nav-label">Interview Schedule</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/InterviewScheduleEmp">View Schedule</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa ti-location-pin"></i>
+                                <span class="nav-label">Placement</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/placementEmp">View Placement</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa ti-share"></i>
+                                <span class="nav-label">Replacement</span><i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="/replacement">Manage Replacement</a>
+                                </li>
+                            </ul>
+                        </li>
                     }
 
 

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Base;
+using API.Context;
 using API.Model;
 using API.Repository.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -15,9 +17,11 @@ namespace API.Controllers
     public class PlacementsController : BaseController<Placement, PlacementRepository>
     {
         readonly PlacementRepository _placementRepo;
-        public PlacementsController(PlacementRepository placementRepo) : base(placementRepo)
+        readonly MyContext _context;
+        public PlacementsController(PlacementRepository placementRepo, MyContext context) : base(placementRepo)
         {
             _placementRepo = placementRepo;
+            _context = context;
         }
 
         [HttpPut("{id}")]
@@ -32,6 +36,19 @@ namespace API.Controllers
                 return BadRequest("Data is not Update");
             }
             return Ok("Update Successfull");
+        }
+
+
+        [HttpGet]
+        [Route("empId/{id}")]
+        public async Task<List<Placement>> GetIDEmp(string id)
+        {
+            var getData = await _context.Placements.Include("Site").Where(x => x.EmpId == id).ToListAsync();
+            if (getData == null)
+            {
+                return null;
+            }
+            return getData;
         }
     }
 }

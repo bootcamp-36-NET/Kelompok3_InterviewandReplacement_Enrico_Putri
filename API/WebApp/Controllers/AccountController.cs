@@ -30,6 +30,19 @@ namespace WebApp.Controllers
             return View("~/Views/Account/Login.cshtml");
         }
 
+        [Route("logout")]
+        public IActionResult Logout()
+        {
+            //var jwtauthmanager = new IJwtAuthManager();
+            //var userName = User.Identity.Name;
+            //_jwtAuthManager.RemoveRefreshTokenByUserName(userName); // can be more specific to ip, user agent, device name, etc.
+            //_logger.LogInformation($"User [{userName}] logged out the system.");
+
+            //HttpContext.Session.Remove("lvl");
+            HttpContext.Session.Clear();
+            return Redirect("/");
+        }
+
         [Route("validate")]
         public IActionResult Validate(UserVM userVM)
         {

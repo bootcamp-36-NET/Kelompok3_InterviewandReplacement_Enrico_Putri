@@ -12562,11 +12562,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\fix sementara Puji Tuhan\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "C:\\Users\\Cornelia Putri\\Downloads\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\fix sementara Puji Tuhan\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\WebApp\\WebApp.csproj",
+      "projectPath": "C:\\Users\\Cornelia Putri\\Downloads\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\WebApp\\WebApp.csproj",
       "packagesPath": "C:\\Users\\Cornelia Putri\\.nuget\\packages\\",
-      "outputPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\fix sementara Puji Tuhan\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\WebApp\\obj\\",
+      "outputPath": "C:\\Users\\Cornelia Putri\\Downloads\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12585,8 +12585,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\fix sementara Puji Tuhan\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj": {
-              "projectPath": "D:\\MII-BC36-Git\\Tugas Akhir inverview&placement\\1\\fix sementara Puji Tuhan\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj"
+            "C:\\Users\\Cornelia Putri\\Downloads\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj": {
+              "projectPath": "C:\\Users\\Cornelia Putri\\Downloads\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj"
             }
           }
         }
