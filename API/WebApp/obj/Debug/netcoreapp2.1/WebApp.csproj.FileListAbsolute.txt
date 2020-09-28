@@ -275,6 +275,7 @@ D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacem
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\WebApp.RazorCoreGenerate.cache
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\Index.g.cshtml.cs
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
+D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Chart\Index.g.cshtml.cs
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
 D:\MII-BC36-Git\Tugas Akhir inverview&placement\1\Kelompok3_InterviewandReplacement_Enrico_Putri\API\WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs

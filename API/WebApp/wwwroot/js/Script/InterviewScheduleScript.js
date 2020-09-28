@@ -76,7 +76,7 @@ $(document).ready(function () {
         "buttons": [
             {
                 extend: 'excel',
-                text: '<i class="fas fa-file-excel"></i> Excel',
+                text: '<i class="fa fa-file-excel-o"></i> Excel',
                 className: 'btn btn-success',
                 title: 'Interview Schedule Table',
                 search: 'applied',
@@ -98,7 +98,7 @@ $(document).ready(function () {
             },
             {
                 extend: 'pdf',
-                text: '<i class="fas fa-file-pdf"></i> PDF',
+                text: '<i class="fa fa-file-pdf-o"></i> PDF',
                 className: 'btn btn-danger',
                 title: 'Interview Schedule Table',
                 search: 'applied',
@@ -109,7 +109,7 @@ $(document).ready(function () {
             },
             {
                 extend: 'print',
-                text: '<i class="fas fa-print"></i> Print',
+                text: '<i class="fa fa-print title="Print"></i>',
                 className: 'btn btn-primary',
                 title: 'Interview Schedule Table',
                 search: 'applied',

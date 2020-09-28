@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Chart";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <h1 class="page-title">Chart</h1>
+
+    <head>
+        <link href="~/css/Style.css" rel="stylesheet" />
+    </head>
+
+    <style>
+        .amChart {
+            width: 100%;
+            max-height: 600px;
+            height: 50vh;
+        }
+    </style>
+
+    <div class="row">
+
+        <!-- Donut Chart -->
+        <div class="col-lg-6">
+            <div class="card ">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header ">
+                    <h6 class="m-0 font-weight-bold text-primary">Site Chart</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <div class="amChart" id="pieChart"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Donut Chart -->
+        <div class="col-lg-6">
+            <div class="card ">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header ">
+                    <h6 class="m-0 font-weight-bold text-primary">Site Chart</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <div class="amChart" id="barChart"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @section Scripts{
+        <script src="~/js/amcharts4/core.js"></script>
+        <script src="~/js/amcharts4/charts.js"></script>
+        <script src="~/js/amcharts4/themes/animated.js"></script>
+
+        <script src="~/js/Script/ChartScript.js"></script>
+
+    }

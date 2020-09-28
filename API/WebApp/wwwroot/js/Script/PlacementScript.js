@@ -121,7 +121,8 @@ $(document).ready(function () {
                 search: 'applied',
                 order: 'applied',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4]
+                    columns: [0, 1, 2, 3, 4],
+
                 },
             },
             {
