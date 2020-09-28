@@ -54,7 +54,6 @@
                 </ul>
                 <!-- END TOP-LEFT TOOLBAR-->
                 <!-- START TOP-RIGHT TOOLBAR-->
-
                 <ul class="nav navbar-toolbar">
                     <li class="dropdown dropdown-user">
                         <a class="nav-link dropdown-toggle link" data-toggle="dropdown" value="Login" onclick="/login">
@@ -71,7 +70,6 @@
                         {
 
                         }*@
-
                 </ul>
                 @*@if (level == null)
                     {
@@ -80,7 +78,6 @@
                         </a>
                     }*@
 
-
                 <!-- END TOP-RIGHT TOOLBAR-->
             </div>
         </header>
@@ -88,7 +85,6 @@
         <!-- START SIDEBAR-->
         <nav class="page-sidebar" id="sidebar">
             <div id="sidebar-collapse">
-
                 <div class="admin-block d-flex">
                     <div>
                         <img src="~/html/dist/assets/img/admin-avatar.png" width="45" />
@@ -104,14 +100,13 @@
 
                     }
                     @*<div class="admin-info">
-                        <div class="font-strong">WELCOME TO</div><small><small>Job Registration Submisson</small></small>
-                    </div>*@
+                            <div class="font-strong">WELCOME TO</div><small><small>Job Registration Submisson</small></small>
+                        </div>*@
                     @*@if (level == null)
-        {
+                        {
 
-        }*@
+                        }*@
                 </div>
-
                 <ul class="side-menu metismenu">
                     @if (level == "Admin")
                     {
@@ -144,8 +139,8 @@
                                     <a href="/interviewschedule">Manage Schedule</a>
                                 </li>
                                 @*<li>
-                        <a href="/GetApprove">JobSeeker Approve</a>
-                    </li>*@
+                                        <a href="/GetApprove">JobSeeker Approve</a>
+                                    </li>*@
                             </ul>
                         </li>
                         <li>
@@ -193,18 +188,18 @@
                             </ul>
                         </li>
                         @*<li>
-                <a href="javascript:;">
-                    <i class="sidebar-item-icon fa fa-bar-chart"></i>
-                    <span class="nav-label">Charts</span><i class="fa fa-angle-left arrow"></i>
-                </a>
-                <ul class="nav-2-level collapse">
-                    <li>
-                        <a href="/charts">JobSeeker Charts</a>
-                    </li>
-                </ul>
-            </li>*@
+                                <a href="javascript:;">
+                                    <i class="sidebar-item-icon fa fa-bar-chart"></i>
+                                    <span class="nav-label">Charts</span><i class="fa fa-angle-left arrow"></i>
+                                </a>
+                                <ul class="nav-2-level collapse">
+                                    <li>
+                                        <a href="/charts">JobSeeker Charts</a>
+                                    </li>
+                                </ul>
+                            </li>*@
                     }
-                    else if(level == "Employee")
+                    else if (level == "Employee")
                     {
                         <li>
                             <a href="javascript:;">
@@ -245,11 +240,11 @@
                     @*<li class="heading">PAGES</li>*@
 
                     @*<li>
-            <a href="~/html/dist/calendar.html">
-                <i class="sidebar-item-icon fa fa-calendar"></i>
-                <span class="nav-label">Calendar</span>
-            </a>
-        </li>*@
+                            <a href="~/html/dist/calendar.html">
+                                <i class="sidebar-item-icon fa fa-calendar"></i>
+                                <span class="nav-label">Calendar</span>
+                            </a>
+                        </li>*@
                 </ul>
             </div>
         </nav>
@@ -279,9 +274,17 @@
     <!-- CORE SCRIPTS-->
     <script src="~/html/dist/assets/js/app.min.js"></script>
     <script src="~/js/moment.min.js"></script>
-
     <!-- PAGE LEVEL SCRIPTS-->
     <script src="~/js/sweetalert2@9.js"></script>
+    <script src="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"></script>
+    <script src="//cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

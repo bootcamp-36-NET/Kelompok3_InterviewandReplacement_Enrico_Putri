@@ -89,6 +89,53 @@ $(document).ready(function () {
                 }
             }
         ],
+        "dom": "Bfrtip",
+        "buttons": [
+            {
+                extend: 'excel',
+                text: '<i class="fas fa-file-excel"></i> Excel',
+                className: 'btn btn-success',
+                title: 'Placement Data Table',
+                search: 'applied',
+                order: 'applied',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                },
+            },
+            {
+                extend: 'csv',
+                text: '<i class="fas fa-file-csv"></i> CSV',
+                className: 'btn btn-info',
+                title: 'Placement Data Table',
+                search: 'applied',
+                order: 'applied',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                },
+            },
+            {
+                extend: 'pdf',
+                text: '<i class="fas fa-file-pdf"></i> PDF',
+                className: 'btn btn-danger',
+                title: 'Placement Data Table',
+                search: 'applied',
+                order: 'applied',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                },
+            },
+            {
+                extend: 'print',
+                text: '<i class="fas fa-print"></i> Print',
+                className: 'btn btn-primary',
+                title: 'Placement Data Table',
+                search: 'applied',
+                order: 'applied',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                },
+            },
+        ],
         //initComplete: function () {
         //    this.api().rows().every(function (rowIdx, tableLoop, rowLoop) {
         //        debugger;
