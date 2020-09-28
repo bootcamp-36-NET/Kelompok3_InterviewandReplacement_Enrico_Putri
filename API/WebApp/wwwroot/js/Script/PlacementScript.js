@@ -33,8 +33,26 @@ $(document).ready(function () {
                 //    //cekGetId(getid);
                 //}
             },
-            { "data": "placementDate" },
-            { "data": "placementEndDate" },
+            {
+                "data": "placementDate",
+                'render': function (jsonDate) {
+                    //var date = new Date(jsonDate).toDateString();
+                    //return date;
+                    var date = new Date(jsonDate);
+                    return moment(date).format('DD MMMM YYYY') + '<br> Time : ' + moment(date).format('HH: mm');
+                    //return ("0" + date.getDate()).slice(-2) + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + date.getFullYear();
+                }
+            },
+            {
+                "data": "placementEndDate",
+                'render': function (jsonDate) {
+                    //var date = new Date(jsonDate).toDateString();
+                    //return date;
+                    var date = new Date(jsonDate);
+                    return moment(date).format('DD MMMM YYYY') + '<br> Time : ' + moment(date).format('HH: mm');
+                    //return ("0" + date.getDate()).slice(-2) + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + date.getFullYear();
+                }
+            },
             { "data": "site.name" },
             //{
             //    "data": "createData",

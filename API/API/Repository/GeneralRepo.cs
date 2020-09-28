@@ -67,5 +67,17 @@ namespace API.Repository
             _context.Entry(entity).State = EntityState.Modified;
             return await _context.SaveChangesAsync();
         }
+
+        public async Task<int> Approve(TEntity entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            return await _context.SaveChangesAsync();
+        }
+
+        public async Task<int> Reject(TEntity entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            return await _context.SaveChangesAsync();
+        }
     }
 }

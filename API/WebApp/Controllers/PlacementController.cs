@@ -20,7 +20,16 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.IsAvailable)
+            {
+                if (HttpContext.Session.GetString("lvl") == "Admin")
+                {
+                    return View();
+                }
+                return Redirect("/placementemp");
+            }
+            return Redirect("/Error");
+
         }
 
         public IActionResult LoadPlacement()

@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\program\\API\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "F:\\program\\API\\API\\API.csproj",
+      "projectPath": "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-      "outputPath": "F:\\program\\API\\API\\obj\\",
+      "outputPath": "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

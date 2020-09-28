@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Context;
 using API.Repository.Data;
+using API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,7 @@ namespace API
             services.AddScoped<InterviewSchedulesRepository>();
             services.AddScoped<ReplacementRepository>();
             services.AddScoped<PlacementRepository>();
+            services.AddTransient<SendEmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

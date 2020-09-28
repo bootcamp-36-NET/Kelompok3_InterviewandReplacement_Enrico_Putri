@@ -40,7 +40,7 @@ namespace WebApp.Controllers
 
             //HttpContext.Session.Remove("lvl");
             HttpContext.Session.Clear();
-            return Redirect("/");
+            return Redirect("/login");
         }
 
         [Route("validate")]
