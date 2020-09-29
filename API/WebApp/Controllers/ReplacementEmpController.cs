@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace WebApp.Controllers
 {
-    public class ReplacementController : Controller
+    public class ReplacementEmpController : Controller
     {
         readonly HttpClient client = new HttpClient
         {
@@ -20,15 +20,7 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.IsAvailable)
-            {
-                if (HttpContext.Session.GetString("lvl") == "Super Admin")
-                {
-                    return View();
-                }
-                return Redirect("/replacementemp");
-            }
-            return Redirect("/Error");
+            return View("~/Views/replacement/viewreplacementEmp.cshtml");
         }
 
         public IActionResult LoadReplacement()
@@ -36,9 +28,8 @@ namespace WebApp.Controllers
             IEnumerable<Replacement> replacements = null;
             var token = HttpContext.Session.GetString("token");
             client.DefaultRequestHeaders.Add("Authorization", token);
-            var resTask = client.GetAsync("Replacements");
+            var resTask = client.GetAsync("replacements/empId/" + HttpContext.Session.GetString("id"));
             resTask.Wait();
-
             var result = resTask.Result;
             if (result.IsSuccessStatusCode)
             {
@@ -55,23 +46,25 @@ namespace WebApp.Controllers
 
         }
 
-        public IActionResult GetById(int Id)
+        public IActionResult GetByIdEmp(int Id)
         {
-            Replacement replacement = null;
+            IEnumerable<Replacement> replacement = null;
             var token = HttpContext.Session.GetString("token");
             client.DefaultRequestHeaders.Add("Authorization", token);
-            var resTask = client.GetAsync("Replacements/" + Id);
+
+            var resTask = client.GetAsync("replacements/empId/" + HttpContext.Session.GetString("id"));
             resTask.Wait();
-            HttpContext.Session.SetInt32("Replacements", Id);
-            HttpContext.Session.SetString("Approve", replacement.Approve.ToString());
+
             var result = resTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
-                replacement = JsonConvert.DeserializeObject<Replacement>(json);
+                var data = result.Content.ReadAsAsync<List<Replacement>>();
+                data.Wait();
+                replacement = data.Result;
             }
             else
             {
+                replacement = Enumerable.Empty<Replacement>();
                 ModelState.AddModelError(string.Empty, "Server Error.");
             }
             return Json(replacement);

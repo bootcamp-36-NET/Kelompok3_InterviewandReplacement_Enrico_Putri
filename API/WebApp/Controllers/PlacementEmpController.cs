@@ -33,9 +33,7 @@ namespace WebApp.Controllers
             {
                 var readTask = result.Content.ReadAsAsync<List<Placement>>();
                 readTask.Wait();
-                //readTask.Result.SingleOrDefault(q => q.EmpId == HttpContext.Session.GetString("id"));
                 placements = readTask.Result;
-                //var interEmp = interviews.SingleOrDefault(q => q.EmpId == HttpContext.Session.GetString("userId"));
             }
             else
             {
@@ -54,16 +52,10 @@ namespace WebApp.Controllers
 
             var resTask = client.GetAsync("placements/empId/" + HttpContext.Session.GetString("id"));
             resTask.Wait();
-            //HttpContext.Session.SetInt32("interviewschedules", Id);
-            //HttpContext.Session.SetString("EmpId", interviewSchedule.EmpId);
-            //if (interviewSchedule.EmpId == HttpContext.Session.GetString("id"))
-            //{
+          
             var result = resTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                //var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
-                ////var scheduleEmp = json.Where(q => q.Equals(interviewSchedule.EmpId) == HttpContext.Session.GetString("userId"));
-                //interviewSchedule = JsonConvert.DeserializeObject<InterviewSchedule>(json);
                 var data = result.Content.ReadAsAsync<List<Placement>>();
                 data.Wait();
                 placements = data.Result;

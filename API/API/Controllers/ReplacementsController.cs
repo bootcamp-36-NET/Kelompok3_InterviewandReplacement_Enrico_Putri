@@ -22,11 +22,13 @@ namespace API.Controllers
         public IConfiguration _configuration;
         readonly ReplacementRepository _replacementRepo;
         private readonly SendEmailService _sendEmail;
-        public ReplacementsController(ReplacementRepository replacementRepo, IConfiguration config, SendEmailService sendEmailService) : base(replacementRepo)
+        readonly MyContext _context;
+        public ReplacementsController(ReplacementRepository replacementRepo, IConfiguration config, SendEmailService sendEmailService, MyContext context) : base(replacementRepo)
         {
             _replacementRepo = replacementRepo;
             _sendEmail = sendEmailService;
             _configuration = config;
+            _context = context;
         }
 
         [HttpPut("{id}")]
@@ -155,5 +157,17 @@ namespace API.Controllers
         //    }
         //    return BadRequest("Not Successfully");
         //}
+
+        [HttpGet]
+        [Route("empId/{id}")]
+        public async Task<List<Replacement>> GetIDEmp(string id)
+        {
+            var getData = await _context.Replacements.Include("Site").Where(x => x.EmpId == id).ToListAsync();
+            if (getData == null)
+            {
+                return null;
+            }
+            return getData;
+        }
     }
 }

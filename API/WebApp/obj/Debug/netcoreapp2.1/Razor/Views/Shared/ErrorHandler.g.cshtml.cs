@@ -67,7 +67,7 @@ using WebApp.Models;
             WriteLiteral("\r\n<h1>ERROR</h1>\r\n");
             EndContext();
             BeginContext(115, 301, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a5363c47ce24ab18a87820901a29bb3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1a499e9066446e2954308d5bd10ac76", async() => {
                 BeginContext(121, 149, true);
                 WriteLiteral("\r\n    <div class=\"text-center\">\r\n        <div class=\"error mx-auto\">404</div>\r\n        <p class=\"lead text-gray-800\">Page Not Found</p>\r\n        <h1>");
                 EndContext();
@@ -82,7 +82,7 @@ using WebApp.Models;
                 WriteLiteral("</h1>\r\n        ");
                 EndContext();
                 BeginContext(297, 98, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f3ee40f91e644fd84fd54a7fa86f16d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5f77d6ca7d64e8aa4c693b0fc017747", async() => {
                     BeginContext(371, 20, true);
                     WriteLiteral(" Click here to login");
                     EndContext();
