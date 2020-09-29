@@ -8,15 +8,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<style>
-    .amChart {
-        width: 100%;
-        max-height: 600px;
-        height: 100vh;
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +19,6 @@
     <link href="~/html/dist/assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
     <!-- PLUGINS STYLES-->
     <link href="~/html/dist/assets/vendors/DataTables/datatables.min.css" rel="stylesheet" />
-    <link href="~/css/am4chartsku.css" rel="stylesheet" />
     <!-- THEME STYLES-->
     <link href="~/html/dist/assets/css/main.min.css" rel="stylesheet" />
     <!-- PAGE LEVEL STYLES-->
@@ -102,7 +92,7 @@
                     <div class="admin-info">
                         <div class="font-strong"></div><small></small>
                     </div>
-                    @if (level == "Admin" || level == "Employee")
+                    @if (level == "Super Admin" || level == "Employee")
                     {
                         <div class="admin-info">
                             <div class="font-strong">@Context.Session.GetString("uname")</div><small>@Context.Session.GetString("lvl")</small>
@@ -118,7 +108,7 @@
                         }*@
                 </div>
                 <ul class="side-menu metismenu">
-                    @if (level == "Admin")
+                    @if (level == "Super Admin")
                     {
                         <li>
                             <a href="/interviewschedule">
@@ -136,7 +126,7 @@
                             </a>
                         </li>
                     }
-                    @if (level == "Admin")
+                    @if (level == "Super Admin")
                     {
                         <li class="heading">FEATURES</li>
                         <li>
@@ -193,7 +183,7 @@
                             </a>
                             <ul class="nav-2-level collapse">
                                 <li>
-                                    <a href="/replacement">Manage Replacement</a>
+                                    <a href="/ApproveRejectReplacement">Manage Replacement</a>
                                 </li>
                             </ul>
                         </li>
@@ -305,8 +295,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="//cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
     <script src="//cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
-
-    <!--Chart-->
 
     @RenderSection("Scripts", required: false)
 </body>

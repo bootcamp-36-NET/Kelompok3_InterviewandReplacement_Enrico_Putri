@@ -40,6 +40,28 @@ namespace API.Repository.Data
             return data;
         }
 
-       
+        public async Task<int> Approve(int Id)
+        {
+            var data = await GetID(Id);
+            if (data == null)
+            {
+                return 0;
+            }
+            data.Approve = true;
+            _context.Entry(data).State = EntityState.Modified;
+            return await _context.SaveChangesAsync();
+        }
+
+        public async Task<int> Reject(int Id)
+        {
+            var data = await GetID(Id);
+            if (data == null)
+            {
+                return 0;
+            }
+            data.Reject = true;
+            _context.Entry(data).State = EntityState.Modified;
+            return await _context.SaveChangesAsync();
+        }
     }
 }

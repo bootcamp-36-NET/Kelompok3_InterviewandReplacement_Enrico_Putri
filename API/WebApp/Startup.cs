@@ -45,8 +45,9 @@ namespace WebApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                //app.UseExceptionHandler("/Home/Error");
+                //app.UseHsts();
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
 
             app.UseHttpsRedirection();

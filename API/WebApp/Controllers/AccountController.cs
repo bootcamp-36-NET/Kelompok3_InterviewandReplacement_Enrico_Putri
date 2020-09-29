@@ -30,6 +30,12 @@ namespace WebApp.Controllers
             return View("~/Views/Account/Login.cshtml");
         }
 
+        //[Route("ErrorHandler")]
+        //public IActionResult ErrorHandler()
+        //{
+        //    return View();
+        //}
+
         [Route("logout")]
         public IActionResult Logout()
         {
@@ -40,7 +46,7 @@ namespace WebApp.Controllers
 
             //HttpContext.Session.Remove("lvl");
             HttpContext.Session.Clear();
-            return Redirect("/");
+            return Redirect("/login");
         }
 
         [Route("validate")]

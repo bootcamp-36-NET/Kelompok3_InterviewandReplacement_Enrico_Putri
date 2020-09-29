@@ -3,38 +3,34 @@ var arrSite = [];
 var table = null;
 
 $(document).ready(function () {
-    debugger;
-    table = $('#Placements').DataTable({
+    //debugger;
+    table = $('#ReplacementApproval').DataTable({
         "processing": true,
         "responsive": true,
         "pagination": true,
         "stateSave": true,
         "ajax": {
-            url: "/placement/LoadPlacement",
+            url: "/Replacement/LoadReplacement",
             type: "GET",
             dataType: "json",
             dataSrc: "",
+            cache: false
         },
-        "columns": [
+        columns: [
             {
-                "data": "id",
+                data: "id",
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                     //return meta.row + 1;
                 }
             },
             {
-                "data": "empId"
-                //"className": "getIdEmp",
-                //render: function (data, type, row, meta) {
-                //    debugger;
-                //    var getid = row.empId;
-                //    console.log(getid);
-                //    //cekGetId(getid);
-                //}
+                data: "empId"
             },
+            { data: "site.name" },
+            { data: "replacement_reason" },   
             {
-                "data": "placementDate",
+                data: "createData",
                 'render': function (jsonDate) {
                     //var date = new Date(jsonDate).toDateString();
                     //return date;
@@ -44,48 +40,15 @@ $(document).ready(function () {
                 }
             },
             {
-                "data": "placementEndDate",
-                'render': function (jsonDate) {
-                    //var date = new Date(jsonDate).toDateString();
-                    //return date;
-                    var date = new Date(jsonDate);
-                    return moment(date).format('DD MMMM YYYY') + '<br> Time : ' + moment(date).format('HH: mm');
-                    //return ("0" + date.getDate()).slice(-2) + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + date.getFullYear();
-                }
-            },
-            { "data": "site.name" },
-            //{
-            //    "data": "createData",
-            //    'render': function (jsonDate) {
-            //        //var date = new Date(jsonDate).toDateString();
-            //        //return date;
-            //        var date = new Date(jsonDate);
-            //        return moment(date).format('DD MMMM YYYY') + '<br> Time : ' + moment(date).format('HH: mm');
-            //        //return ("0" + date.getDate()).slice(-2) + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + date.getFullYear();
-            //    }
-            //},
-            //{
-            //    "data": "updateDate",
-            //    'render': function (jsonDate) {
-            //        //debugger;
-            //        //var date = new Date(jsonDate).toDateString();
-            //        //return date;
-            //        var date = new Date(jsonDate);
-            //        if (date.getFullYear() != 0001) {
-            //            return moment(date).format('DD MMMM YYYY') + '<br> Time : ' + moment(date).format('HH: mm');
-            //            //return ("0" + date.getDate()).slice(-2) + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + date.getFullYear();
-            //        }
-            //        return "Not updated yet";
-            //    }
-            //},
-            {
+                
                 "sortable": false,
-                "render": function (data, type, row) {
+                //data: "id",
+                "render": function (data, type, row, meta) {
                     //console.log(row);
                     $('[data-toggle="tooltip"]').tooltip();
-                    return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ><i class="fa fa-lg fa-edit"></i></button>'
+                    return '<button class="btn btn-outline-success btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Approve" onclick="return Approve(' + meta.row + ')" ><i class="fa fa-lg fa-check"></i></button>'
                         + '&nbsp;'
-                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ><i class="fa fa-lg fa-times"></i></button>'
+                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Reject" onclick="return Reject(' + meta.row + ')" ><i class="fa fa-lg fa-times"></i></button>'
                 }
             }
         ],
@@ -95,7 +58,7 @@ $(document).ready(function () {
                 extend: 'excel',
                 text: '<i class="fa fa-file-excel-o"></i> Excel',
                 className: 'btn btn-success',
-                title: 'Placement Table',
+                title: 'Replacement Recap',
                 search: 'applied',
                 order: 'applied',
                 exportOptions: {
@@ -106,7 +69,7 @@ $(document).ready(function () {
                 extend: 'csv',
                 text: '<i class="fas fa-file-csv"></i> CSV',
                 className: 'btn btn-info',
-                title: 'Placement Table',
+                title: 'Replacement Recap',
                 search: 'applied',
                 order: 'applied',
                 exportOptions: {
@@ -117,7 +80,7 @@ $(document).ready(function () {
                 extend: 'pdf',
                 text: '<i class="fa fa-file-pdf-o"></i> PDF',
                 className: 'btn btn-danger',
-                title: 'Placement Table',
+                title: 'Replacement Recap',
                 search: 'applied',
                 order: 'applied',
                 exportOptions: {
@@ -128,7 +91,7 @@ $(document).ready(function () {
                 extend: 'print',
                 text: '<i class="fa fa-print title="Print"></i>',
                 className: 'btn btn-primary',
-                title: 'Placement Table',
+                title: 'Replacement Recap',
                 search: 'applied',
                 order: 'applied',
                 exportOptions: {
@@ -167,9 +130,9 @@ $(document).ready(function () {
 
 function ClearScreen() {
     $('#Id').val('');
-    $('#EmployeeName').val('');
-    $('#Reason').val('');
+    $('#EmployeeOption').val('');
     $('#SiteOption').val('');
+    $('#replacement_reason').val('');
     $('#update').hide();
     $('#add').show();
 }
@@ -246,119 +209,128 @@ function renderSite(element) {
 LoadSite($('#SiteOption'))
 
 function GetById(id) {
-    //debugger;
+    debugger;
     $.ajax({
-        url: "/placement/GetById/",
+        url: "/Replacement/GetById/",
         data: { id: id }
     }).then((result) => {
-        //debugger;
-        $('#Id').val(result.id);
-        $('#EmployeeOption').val(result.empId);
-        $('#PlacementDate').val(result.placementDate);
-        $('#PlacementEndDate').val(result.placementEndDate);
-        $('#SiteOption').val(result.siteId);
+        debugger;
+        $('#Id').append(result.jobSId);
+        $('#Name').append(result.name);
+        $('#Gender').append(result.gender);
+        $('#BirthDate').append(result.birth_Date);
+        $('#Address').append(result.address);
+        $('#Religion').append(result.religion);
+        $('#MaritalStatus').append(result.marital_Status);
+        $('#Nasionality').append(result.nationality);
+        $('#LastEducation').append(result.last_Education);
+        $('#GPA').append(result.gpa);
+        //$('#Id').val(result.id);
+        //$('#EmployeeOption').val(result.empId);
+        //$('#replacement_reason').val(result.replacement_reason);
+        //$('#SiteOption').val(result.siteId);
         $('#add').hide();
-        $('#update').show();
+        //$('#update').show();
         $('#myModal').modal('show');
     })
 }
 
-function Save() {
+function Approve(idx) {
     debugger;
-    var placement = new Object();
-    placement.id = 0;
-    placement.empId = $('#EmployeeOption').val();
-    placement.placementDate = $('#placementdate').val();
-    placement.placementEndDate = $('#placementenddate').val();
-    placement.siteId = $('#SiteOption').val();
+    var ApproveVM = new Object();
+    ApproveVM.id = table.row(idx).data().id
+    ApproveVM.empId = table.row(idx).data().empId
+    //{
+    //    //id: table.row(idx).data().id,
+    //    empId: table.row(idx).data().empId
+    //};
     $.ajax({
         type: 'POST',
-        url: "/placement/InsertOrUpdate/",
+        url: "ApproveRejectReplacement/ApproveRequest/",
         cache: false,
         dataType: "JSON",
-        data: placement
-    }).then((result) => {
-        //debugger;
-        if (result.statusCode == 200) {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Data inserted Successfully',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-            table.ajax.reload(null, false);
-        } else {
-            Swal.fire('Error', 'Failed to Input', 'error');
-            ClearScreen();
-        }
-    })
-}
-
-function Update() {
-    debugger;
-    var placement = new Object();
-    placement.id = $('#Id').val();
-    placement.empId = $('#EmployeeOption').val();
-    placement.placementDate = $('#placementdate').val();
-    placement.placementEndDate = $('#placementenddate').val();
-    placement.siteId = $('#SiteOption').val();
-    $.ajax({
-        type: 'POST',
-        url: "/placement/InsertOrUpdate/",
-        cache: false,
-        dataType: "JSON",
-        data: placement
+        data: ApproveVM
     }).then((result) => {
         debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Data Updated Successfully',
+                title: 'Replacement Has Been Approved',
                 showConfirmButton: false,
                 timer: 1500,
             });
             table.ajax.reload(null, false);
         } else {
-            Swal.fire('Error', 'Failed to Input', 'error');
+            Swal.fire('Error', 'Failed to Approve', 'error');
             ClearScreen();
         }
     })
 }
 
-
-function Delete(id) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-    }).then((resultSwal) => {
-        if (resultSwal.value) {
-            //debugger;
-            $.ajax({
-                url: "/placement/Delete/",
-                data: { id: id }
-            }).then((result) => {
-                //debugger;
-                if (result.statusCode == 200) {
-                    //debugger;
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Delete Successfully',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                    table.ajax.reload(null, false);
-                } else {
-                    Swal.fire('Error', 'Failed to Delete', 'error');
-                    ClearScreen();
-                }
-            })
-        };
-    });
+function Reject(idx) {
+    debugger;
+    var RejectVM = new Object();
+    RejectVM.id = table.row(idx).data().id
+    RejectVM.empId = table.row(idx).data().empId
+    //{
+    //    //id: table.row(idx).data().id,
+    //    empId: table.row(idx).data().empId
+    //};
+    $.ajax({
+        type: 'POST',
+        url: "ApproveRejectReplacement/RejectRequest/",
+        cache: false,
+        dataType: "JSON",
+        data: RejectVM
+    }).then((result) => {
+        debugger;
+        if (result.statusCode == 200) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Replacement Has Been Rejected',
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            table.ajax.reload(null, false);
+        } else {
+            Swal.fire('Error', 'Failed to Reject', 'error');
+            ClearScreen();
+        }
+    })
 }
+//function Approve(id) {
+//    Swal.fire({
+//        title: 'Are you sure?',
+//        text: "You won't be able to revert this!",
+//        showCancelButton: true,
+//        confirmButtonColor: '#3085d6',
+//        cancelButtonColor: '#d33',
+//        confirmButtonText: 'Yes, Approve it!',
+//    }).then((resultSwal) => {
+//        if (resultSwal.value) {
+//            debugger;
+//            $.ajax({
+//                url: "ApproveRejectReplacement/Reject/",
+//                data: { id: id }
+//            }).then((result) => {
+//                debugger;
+//                if (result.statusCode == 200) {
+//                    debugger;
+//                    Swal.fire({
+//                        position: 'center',
+//                        icon: 'success',
+//                        title: 'Replacement Has Been Rejected',
+//                        showConfirmButton: false,
+//                        timer: 1500,
+//                    });
+//                    table.ajax.reload(null, false);
+//                } else {
+//                    Swal.fire('Error', 'Failed to Reject', 'error');
+//                    ClearScreen();
+//                }
+//            })
+//        };
+//    });
+//}

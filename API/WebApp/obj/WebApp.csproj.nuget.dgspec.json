@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\program\\API\\WebApp\\WebApp.csproj": {}
+    "C:\\Users\\Enrico\\Downloads\\code\\API\\WebApp\\WebApp.csproj": {}
   },
   "projects": {
-    "F:\\program\\API\\API\\API.csproj": {
+    "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\program\\API\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "F:\\program\\API\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-        "outputPath": "F:\\program\\API\\API\\obj\\",
+        "outputPath": "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -70,14 +70,14 @@
         }
       }
     },
-    "F:\\program\\API\\WebApp\\WebApp.csproj": {
+    "C:\\Users\\Enrico\\Downloads\\code\\API\\WebApp\\WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\program\\API\\WebApp\\WebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Enrico\\Downloads\\code\\API\\WebApp\\WebApp.csproj",
         "projectName": "WebApp",
-        "projectPath": "F:\\program\\API\\WebApp\\WebApp.csproj",
+        "projectPath": "C:\\Users\\Enrico\\Downloads\\code\\API\\WebApp\\WebApp.csproj",
         "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-        "outputPath": "F:\\program\\API\\WebApp\\obj\\",
+        "outputPath": "C:\\Users\\Enrico\\Downloads\\code\\API\\WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -96,8 +96,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "F:\\program\\API\\API\\API.csproj": {
-                "projectPath": "F:\\program\\API\\API\\API.csproj"
+              "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\API.csproj": {
+                "projectPath": "C:\\Users\\Enrico\\Downloads\\code\\API\\API\\API.csproj"
               }
             }
           }
