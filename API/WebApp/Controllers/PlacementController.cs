@@ -22,13 +22,13 @@ namespace WebApp.Controllers
         {
             if (HttpContext.Session.IsAvailable)
             {
-                if (HttpContext.Session.GetString("lvl") == "Admin")
+                if (HttpContext.Session.GetString("lvl") == "Super Admin")
                 {
                     return View();
                 }
-                return Redirect("/placementemp");
+                return Redirect("/ErrorHandler");
             }
-            return Redirect("/Error");
+            return Redirect("/ErrorHandler");
 
         }
 

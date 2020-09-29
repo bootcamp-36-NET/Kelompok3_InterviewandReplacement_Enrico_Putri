@@ -10,7 +10,7 @@ $(document).ready(function () {
         "pagination": true,
         "stateSave": true,
         "ajax": {
-            url: "/Replacement/LoadReplacement",
+            url: "/Replacement/getbyidemp",
             type: "GET",
             dataType: "json",
             dataSrc: "",

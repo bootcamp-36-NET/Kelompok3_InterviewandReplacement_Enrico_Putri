@@ -81,7 +81,7 @@ namespace WebApp.Controllers
                         else if (account.RoleName != null)
                         {
                             HttpContext.Session.SetString("id", account.Id);
-                            //HttpContext.Session.SetString("uname", account.name);
+                            HttpContext.Session.SetString("uname", account.name);
                             //HttpContext.Session.SetString("email", account.Email);
                             HttpContext.Session.SetString("lvl", account.RoleName);
                             //HttpContext.Session.SetInt32("joblist", account.Joblists);

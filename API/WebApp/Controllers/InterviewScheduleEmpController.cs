@@ -19,7 +19,17 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View("~/Views/interviewschedule/viewinterviewscheduleEmp.cshtml");
+            if (HttpContext.Session.IsAvailable)
+            {
+                if (HttpContext.Session.GetString("lvl") == "Employee")
+                {
+                    return View("~/Views/interviewschedule/viewinterviewscheduleEmp.cshtml");
+                }
+                return Redirect("/ErrorHandler");
+            }
+            return Redirect("/ErrorHandler");
+            //return View("~/Views/interviewschedule/viewinterviewscheduleEmp.cshtml");
+
         }
 
         public IActionResult LoadInterviewScheduleEmp()

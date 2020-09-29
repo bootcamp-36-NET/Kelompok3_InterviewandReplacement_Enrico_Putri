@@ -23,13 +23,17 @@ namespace WebApp.Controllers
         {
             if (HttpContext.Session.IsAvailable)
             {
-                if (HttpContext.Session.GetString("lvl") == "Admin")
+                if (HttpContext.Session.GetString("lvl") == "Super Admin")
                 {
                     return View();
                 }
-                return Redirect("/interviewscheduleemp");
+                else if (HttpContext.Session.GetString("lvl") == "Employee")
+                {
+                return Redirect("/InterviewScheduleEmp");
+                }
+                return Redirect("/ErrorHandler");
             }
-            return Redirect("/Error");
+            return Redirect("/ErrorHandler");
             
         }
 

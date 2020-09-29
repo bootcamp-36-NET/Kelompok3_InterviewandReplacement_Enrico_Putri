@@ -18,7 +18,15 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View("~/Views/placement/viewplacementEmp.cshtml");
+            if (HttpContext.Session.IsAvailable)
+            {
+                if (HttpContext.Session.GetString("lvl") == "Employee")
+                {
+                    return View("~/Views/placement/viewplacementEmp.cshtml");
+                }
+                return Redirect("/ErrorHandler");
+            }
+            return Redirect("/ErrorHandler");
         }
 
         public IActionResult LoadPlacementEmp()

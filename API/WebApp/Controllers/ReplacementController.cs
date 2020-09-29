@@ -20,7 +20,15 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.IsAvailable)
+            {
+                if (HttpContext.Session.GetString("lvl") == "Employee")
+                {
+                    return View();
+                }
+                return Redirect("/ErrorHandler");
+            }
+            return Redirect("/ErrorHandler");
         }
 
         public IActionResult LoadReplacement()
@@ -46,7 +54,37 @@ namespace WebApp.Controllers
             return Json(replacements);
 
         }
+        public IActionResult GetByIdEmp()
+        {
+            IEnumerable<Replacement> replacements = null;
+            var token = HttpContext.Session.GetString("token");
+            client.DefaultRequestHeaders.Add("Authorization", token);
 
+            var resTask = client.GetAsync("replacements/empId/" + HttpContext.Session.GetString("id"));
+            resTask.Wait();
+            //HttpContext.Session.SetInt32("interviewschedules", Id);
+            //HttpContext.Session.SetString("EmpId", interviewSchedule.EmpId);
+            //if (interviewSchedule.EmpId == HttpContext.Session.GetString("id"))
+            //{
+            var result = resTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                //var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
+                ////var scheduleEmp = json.Where(q => q.Equals(interviewSchedule.EmpId) == HttpContext.Session.GetString("userId"));
+                //interviewSchedule = JsonConvert.DeserializeObject<InterviewSchedule>(json);
+                var data = result.Content.ReadAsAsync<List<Replacement>>();
+                data.Wait();
+                replacements = data.Result;
+            }
+            else
+            {
+                replacements = Enumerable.Empty<Replacement>();
+                ModelState.AddModelError(string.Empty, "Server Error.");
+            }
+
+            //}
+            return Json(replacements);
+        }
         public IActionResult GetById(int Id)
         {
             Replacement replacement = null;
