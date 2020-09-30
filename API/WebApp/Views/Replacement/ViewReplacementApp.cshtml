@@ -1,6 +1,6 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
 @{
-    ViewData["Title"] = "ViewReplacementEmp";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/_Layout.cshtml";
 }
 
@@ -11,11 +11,12 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header no-bd">
-                    <h5 class="modal-title"><span class="fw-mediumbold">Job List</span></h5>
+                    <h5 class="modal-title"><span class="fw-mediumbold">Request Replacement</span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
                     <form>
                         <div class="row">
@@ -23,7 +24,8 @@
                             <div class="col-sm-12">
                                 <div class="form-group form-group-default">
                                     <label>Employee</label>
-                                    <select class="form-control" id="EmployeeOption" name="EmployeeOption"></select>
+                                    @*<select class="form-control" id="EmployeeOption" name="EmployeeOption"></select>*@
+                                    <input type="text" id="Employee" name="Employee" class="form-control" value="@Context.Session.GetString("id")" placeholder="@Context.Session.GetString("uname")" disabled />
                                 </div>
                                 <div class="form-group form-group-default">
                                     <label>Site</label>
@@ -48,17 +50,18 @@
         </div>
     </div>
 
+
     <div class="page-heading">
-        <h1 class="page-title">Manage Replacement</h1>
+        <h1 class="page-title">Status Replacement</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="/"><i class="la la-home font-20"></i></a>
             </li>
         </ol>
         <div data-toggle="modal" data-target="#myModal" onclick="ClearScreen();">
-            <button class="btn btn-outline-success btn-circle" data-toggle="tooltip" data-placement="right" data-animation="false" title="Add">
+            @*<button class="btn btn-outline-success btn-circle" data-toggle="tooltip" data-placement="right" data-animation="false" title="Add">
                 <i class="fa fa-plus"></i>
-            </button>
+            </button>*@
         </div>
     </div>
     <div class="page-content fade-in-up">
@@ -67,6 +70,7 @@
                 <div class="ibox-title">Data Table</div>
                 </div>*@
             <div class="ibox-body">
+
                 <table class="table table-striped table-bordered table-hover" id="Replacements" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -74,7 +78,7 @@
                             <th>Employee</th>
                             <th>Site</th>
                             <th>Replacement Reason</th>
-                            <th>Action</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                 </table>
@@ -83,7 +87,9 @@
     </div>
     <!-- END PAGE CONTENT-->
 </div>
+
 @section Scripts{
-    <script src="~/js/Script/ReplacementEmpScript.js"></script>
+    <script src="~/js/Script/ReplacementStatus.js"></script>
     <script src="~/js/sweetalert2@9.js"></script>
 }
+

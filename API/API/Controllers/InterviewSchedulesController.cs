@@ -6,6 +6,7 @@ using API.Base;
 using API.Context;
 using API.Model;
 using API.Repository.Data;
+using API.Services;
 using API.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +21,12 @@ namespace API.Controllers
     {
         readonly InterviewSchedulesRepository _interviewscheduleRepo;
         readonly MyContext _context;
-        public InterviewSchedulesController(InterviewSchedulesRepository interviewSchedulesRepo, MyContext context) : base(interviewSchedulesRepo)
+        readonly SendEmailService _sendEmail;
+        public InterviewSchedulesController(InterviewSchedulesRepository interviewSchedulesRepo, MyContext context, SendEmailService sendEmailService) : base(interviewSchedulesRepo)
         {
             _interviewscheduleRepo = interviewSchedulesRepo;
             _context = context;
+            _sendEmail = sendEmailService;
         }
 
         [HttpPut("{id}")]
@@ -59,12 +62,38 @@ namespace API.Controllers
         [Route("empId/{id}")]
         public async Task<List<InterviewSchedule>> GetIDEmp(string id)
         {
-            var getData = await _context.InterviewSchedules.Include("Joblist").Include("Site").Where(x => x.EmpId == id).ToListAsync();
+            var getData = await _context.InterviewSchedules.Include("Joblist").Include("Site").Where(x => x.EmpId == id && x.isDelete == false).ToListAsync();
             if (getData == null)
             {
                 return null;
             }
             return getData;
         }
+
+        [HttpPost]
+        [Route("create")]
+        public IActionResult Create2(InterviewVM interviewVM)
+        {
+            var interview = new InterviewSchedule
+            {
+                EmpId = interviewVM.empId,
+                Interview_date = interviewVM.interview_date,
+                JoblistId = interviewVM.joblistID,
+                SiteId = interviewVM.siteId,
+                isDelete = false
+            };
+
+            _context.InterviewSchedules.AddAsync(interview);
+            _context.SaveChanges();
+            var emailData = new SendEmailVM()
+            {
+                Email = interviewVM.Email,
+                Subject = "Interview Schedule" + DateTimeOffset.Now.ToString("Y"),
+                Body = "Check Your Interview Schedule"
+            };
+            _sendEmail.SendEmail(emailData);
+            return Ok("Interview Schedule created !");
+        }
     }
+    
 }

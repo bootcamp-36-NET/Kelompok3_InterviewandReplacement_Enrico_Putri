@@ -6,14 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
 {
-    [Route("/Error/{status}")]
     public class ErrorHandlerController : Controller
     {
-        public IActionResult HttpStatusCodeHandler(int status)
+        [Route("Error/{statusCode}")]
+        public IActionResult HttpStatusCodeHandler(int statusCode)
         {
-            if (status == 404)
+            switch (statusCode)
             {
-                ViewBag.msg = "Sorry, the page doesn't exist";
+                case 404:
+                    ViewBag.ErrorMessage = "Sorry, the resource you requested could not be found";
+                    break;
             }
             return View("ErrorHandler");
         }

@@ -10,7 +10,7 @@ $(document).ready(function () {
         "pagination": true,
         "stateSave": true,
         "ajax": {
-            url: "/Replacement/getbyidemp",
+            url: "/ReplacementEmpStatus/GetByIdEmpApp",
             type: "GET",
             dataType: "json",
             dataSrc: "",
@@ -61,12 +61,8 @@ $(document).ready(function () {
             //},
             {
                 "sortable": false,
-                "render": function (data, type, row) {
-                    //console.log(row);
-                    $('[data-toggle="tooltip"]').tooltip();
-                    return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ><i class="fa fa-lg fa-edit"></i></button>'
-                        + '&nbsp;'
-                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ><i class="fa fa-lg fa-times"></i></button>'
+                "render": function (Status) {
+                    return "Approve";
                 }
             }
         ],
@@ -194,102 +190,4 @@ function GetById(id) {
         $('#update').show();
         $('#myModal').modal('show');
     })
-}
-
-function Save() {
-    debugger;
-    var replacement = new Object();
-    replacement.id= 0;
-    replacement.empId = $('#Employee').val();
-    replacement.siteId = $('#SiteOption').val();
-    replacement.replacement_reason = $('#replacement_reason').val();
-    $.ajax({
-        type: 'POST',
-        url: "/Replacement/InsertOrUpdate/",
-        cache: false,
-        dataType: "JSON",
-        data: replacement
-    }).then((result) => {
-        //debugger;
-        if (result.statusCode == 200) {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Data inserted Successfully',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-            table.ajax.reload(null, false);
-        } else {
-            Swal.fire('Error', 'Failed to Input', 'error');
-            ClearScreen();
-        }
-    })
-}
-
-function Update() {
-    debugger;
-    var replacement = new Object();
-    replacement.id= $('#Id').val();
-    replacement.empId = $('#Employee').val();
-    replacement.siteId = $('#SiteOption').val();
-    replacement.replacement_reason = $('#replacement_reason').val();
-    $.ajax({
-        type: 'POST',
-        url: "/Replacement/InsertOrUpdate/",
-        cache: false,
-        dataType: "JSON",
-        data: replacement
-    }).then((result) => {
-       debugger;
-        if (result.statusCode == 200) {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Data Updated Successfully',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-            table.ajax.reload(null, false);
-        } else {
-            Swal.fire('Error', 'Failed to Input', 'error');
-            ClearScreen();
-        }
-    })
-}
-
-
-function Delete(id) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-    }).then((resultSwal) => {
-        if (resultSwal.value) {
-            //debugger;
-            $.ajax({
-                url: "/Replacement/Delete/",
-                data: { id: id }
-            }).then((result) => {
-                //debugger;
-                if (result.statusCode == 200) {
-                    //debugger;
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Delete Successfully',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                    table.ajax.reload(null, false);
-                } else {
-                    Swal.fire('Error', 'Failed to Delete', 'error');
-                    ClearScreen();
-                }
-            })
-        };
-    });
 }

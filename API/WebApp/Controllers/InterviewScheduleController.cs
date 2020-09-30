@@ -19,6 +19,11 @@ namespace WebApp.Controllers
             BaseAddress = new Uri("https://localhost:44395/api/")
         };
 
+        readonly HttpClient userClient = new HttpClient
+        {
+            BaseAddress = new Uri("http://winarto-001-site1.dtempurl.com/api/")
+        };
+
         public IActionResult Index()
         {
             if (HttpContext.Session.IsAvailable)
@@ -27,10 +32,14 @@ namespace WebApp.Controllers
                 {
                     return View();
                 }
-                return Redirect("/interviewscheduleemp");
+                else if (HttpContext.Session.GetString("lvl") == "Employee")
+                {
+                    return Redirect("/InterviewScheduleEmp");
+                }
+                return Redirect("/ErrorHandler");
             }
-            return Redirect("/Error");
-            
+            return Redirect("/ErrorHandler");
+
         }
 
         public IActionResult LoadInterviewSchedule()
@@ -78,29 +87,67 @@ namespace WebApp.Controllers
             return Json(interviewSchedule);
         }
 
-        public IActionResult InsertOrUpdate(InterviewSchedule interviewSchedule, int id)
+        //public IActionResult InsertOrUpdate(InterviewSchedule interviewSchedule, int id)
+        //{
+        //    try
+        //    {
+        //        var json = JsonConvert.SerializeObject(interviewSchedule);
+        //        var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+        //        var byteContent = new ByteArrayContent(buffer);
+        //        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        //        var token = HttpContext.Session.GetString("token");
+        //        client.DefaultRequestHeaders.Add("Authorization", token);
+        //        if (interviewSchedule.Id == 0)
+        //        {
+        //            var result = client.PostAsync("interviewschedules/create", byteContent).Result;
+        //            return Json(result);
+        //        }
+        //        else if (interviewSchedule.Id == id)
+        //        {
+        //            var result = client.PutAsync("interviewschedules/" + id, byteContent).Result;
+        //            return Json(result);
+        //        }
+
+        //        return Json(404);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
+        public IActionResult InsertOrUpdate(InterviewVM interviewVM, int id)
         {
             try
+            { 
+            var authToken = HttpContext.Session.GetString("token");
+
+            userClient.DefaultRequestHeaders.Add("Authorization", authToken);
+            var resTaskUser = userClient.GetAsync("Users/" + interviewVM.empId);
+            resTaskUser.Wait();
+
+            var userResult = resTaskUser.Result;
+            var responseUserData = userResult.Content.ReadAsAsync<GetUserVM>().Result;
+            interviewVM.Email = responseUserData.Email;
+
+            var json = JsonConvert.SerializeObject(interviewVM);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            if (interviewVM.Id == 0)
             {
-                var json = JsonConvert.SerializeObject(interviewSchedule);
-                var buffer = System.Text.Encoding.UTF8.GetBytes(json);
-                var byteContent = new ByteArrayContent(buffer);
-                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var result = client.PostAsync("interviewschedules/create", byteContent).Result;
+                return Json(result);
+            }
+            else if (interviewVM.Id == id)
+            {
+                var result = client.PutAsync("interviewschedules/" + id, byteContent).Result;
+                return Json(result);
+            }
 
-                var token = HttpContext.Session.GetString("token");
-                client.DefaultRequestHeaders.Add("Authorization", token);
-                if (interviewSchedule.Id == 0)
-                {
-                    var result = client.PostAsync("interviewschedules", byteContent).Result;
-                    return Json(result);
-                }
-                else if (interviewSchedule.Id == id)
-                {
-                    var result = client.PutAsync("interviewschedules/" + id, byteContent).Result;
-                    return Json(result);
-                }
-
-                return Json(404);
+            return Json(404);
             }
             catch (Exception ex)
             {

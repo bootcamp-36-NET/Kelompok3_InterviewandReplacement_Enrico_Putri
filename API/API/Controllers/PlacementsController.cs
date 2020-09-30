@@ -30,6 +30,8 @@ namespace API.Controllers
             var getid = await _placementRepo.GetID(id);
             getid.EmpId = entity.EmpId;
             getid.SiteId = entity.SiteId;
+            getid.PlacementDate = entity.PlacementDate;
+            getid.PlacementEndDate = entity.PlacementEndDate;
             var data = await _placementRepo.Update(getid);
             if (data.Equals(null))
             {
@@ -43,7 +45,7 @@ namespace API.Controllers
         [Route("empId/{id}")]
         public async Task<List<Placement>> GetIDEmp(string id)
         {
-            var getData = await _context.Placements.Include("Site").Where(x => x.EmpId == id).ToListAsync();
+            var getData = await _context.Placements.Include("Site").Where(x => x.EmpId == id && x.isDelete == false).ToListAsync();
             if (getData == null)
             {
                 return null;

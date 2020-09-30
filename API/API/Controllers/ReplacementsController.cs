@@ -23,12 +23,14 @@ namespace API.Controllers
         readonly ReplacementRepository _replacementRepo;
         private readonly SendEmailService _sendEmail;
         readonly MyContext _context;
+
         public ReplacementsController(ReplacementRepository replacementRepo, IConfiguration config, SendEmailService sendEmailService, MyContext context) : base(replacementRepo)
         {
             _replacementRepo = replacementRepo;
             _sendEmail = sendEmailService;
             _configuration = config;
             _context = context;
+
         }
 
         [HttpPut("{id}")]
@@ -44,6 +46,68 @@ namespace API.Controllers
                 return BadRequest("Data is not Update");
             }
             return Ok("Update Successfull");
+        }
+
+        [HttpGet]
+        [Route("empId/{id}")]
+        public async Task<List<Replacement>> GetIDEmp(string id)
+        {
+            var getData = await _context.Replacements.Include("Site").Where(x => x.EmpId == id && x.isDelete == false && x.Reject == false).ToListAsync();
+            if (getData == null)
+            {
+                return null;
+            }
+            return getData;
+        }
+
+        [HttpGet]
+        [Route("empIdApp/{id}")]
+        public async Task<List<Replacement>> GetIdApp(string id)
+        {
+            var getData = await _context.Replacements.Include("Site").Where(x => x.EmpId == id && x.isDelete == false && x.Approve == true).ToListAsync();
+            if (getData == null)
+            {
+                return null;
+            }
+            return getData;
+        }
+
+        [HttpGet]
+        [Route("empIdRej/{id}")]
+        public async Task<List<Replacement>> GetIdRej(string id)
+        {
+            var getData = await _context.Replacements.Include("Site").Where(x => x.EmpId == id && x.isDelete == false && x.Reject == true).ToListAsync();
+            if (getData == null)
+            {
+                return null;
+            }
+            return getData;
+        }
+
+        //nampilin yang udah di approve/reject
+        [HttpGet]
+        [Route("empIdStatus")]
+        public async Task<List<Replacement>> GetAllStatus()
+        {
+            var getData = await _context.Replacements.Include("Site").Where(x => x.isDelete == false && x.Reject == true || x.Approve == true).ToListAsync();
+            if (getData == null)
+            {
+                return null;
+            }
+            return getData;
+        }
+
+        //nampilin yang belum di approve/reject
+        [HttpGet]
+        [Route("empIdStatus2")]
+        public async Task<List<Replacement>> GetAllStatus2()
+        {
+            var getData = await _context.Replacements.Include("Site").Where(x => x.isDelete == false && x.Reject == false && x.Approve == false).ToListAsync();
+            if (getData == null)
+            {
+                return null;
+            }
+            return getData;
         }
 
         //[HttpDelete]
@@ -87,7 +151,7 @@ namespace API.Controllers
             {
                 Email = approveVM.Email,
                 Subject = "Replacement Approval " + DateTimeOffset.Now.ToString("Y"),
-                Body = "Your Replacement Request Has been Approved"
+                Body = "Your replacement request has been approved"
             };
             _sendEmail.SendEmail(emailData);
 
@@ -100,7 +164,7 @@ namespace API.Controllers
         {
             var replacement = await _replacementRepo.GetID(approveVM.Id);
 
-            replacement.Approve = true;
+            replacement.Reject = true;
             var result = await _replacementRepo.Reject(replacement);
             if (result < 0)
             {
@@ -111,63 +175,11 @@ namespace API.Controllers
             {
                 Email = approveVM.Email,
                 Subject = "Replacement Approval " + DateTimeOffset.Now.ToString("Y"),
-                Body = "We're Sorry, Your Replacement Request Has been Rejected"
+                Body = "We're sorry, your replacement request has been rejected. Please request replacement again!"
             };
             _sendEmail.SendEmail(emailData);
 
             return Ok("Request Rejected !");
-        }
-
-        //[HttpPost]
-        //[Route("Reject")]
-        //public IActionResult Reject(Replacement replacement)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var jobsid = _context.Replacements.Where(r => r.EmpId == replacement.EmpId).FirstOrDefault();
-
-        //        //var user = new User();
-        //        //if (jobsid.Id == userVM.Id)
-        //        //{
-        //        //    userVM.Email = jobsid.Email;
-        //        //    userVM.Username = jobsid.JobSeeker.Name;
-
-        //        //}
-        //        //client.Port = 587;
-        //        //client.Host = "smtp.gmail.com";
-        //        //client.EnableSsl = true;
-        //        //client.Timeout = 10000;
-        //        //client.DeliveryMethod = SmtpDeliveryMethod.Network;
-        //        //client.UseDefaultCredentials = false;
-        //        //client.Credentials = new NetworkCredential(attrEmail.mail, attrEmail.pass);
-
-        //        //var fill = "Dear " + userVM.Username + "\n\n"
-        //        //          + "We are sorry that your submission doesn't match what we are looking for, maybe you can try again next time or other position. Keep spirit and always have a nice days \n"
-        //        //          + "\n\nThank You";
-
-        //        //MailMessage mm = new MailMessage("donotreply@domain.com", userVM.Email, "Job Registration Submission", fill);
-        //        //mm.BodyEncoding = UTF8Encoding.UTF8;
-        //        //mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-        //        //client.Send(mm);
-
-        //        jobsid.Approve = true;
-
-        //        _context.SaveChanges();
-        //        return Ok("Successfully Sent");
-        //    }
-        //    return BadRequest("Not Successfully");
-        //}
-
-        [HttpGet]
-        [Route("empId/{id}")]
-        public async Task<List<Replacement>> GetIDEmp(string id)
-        {
-            var getData = await _context.Replacements.Include("Site").Where(x => x.EmpId == id).ToListAsync();
-            if (getData == null)
-            {
-                return null;
-            }
-            return getData;
         }
     }
 }

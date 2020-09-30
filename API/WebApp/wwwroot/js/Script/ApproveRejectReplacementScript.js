@@ -58,29 +58,19 @@ $(document).ready(function () {
                 extend: 'excel',
                 text: '<i class="fa fa-file-excel-o"></i> Excel',
                 className: 'btn btn-success',
-                title: 'Replacement Recap',
+                title: 'Request Replacement Table',
                 search: 'applied',
                 order: 'applied',
                 exportOptions: {
                     columns: [0, 1, 2, 3, 4]
                 },
             },
-            {
-                extend: 'csv',
-                text: '<i class="fas fa-file-csv"></i> CSV',
-                className: 'btn btn-info',
-                title: 'Replacement Recap',
-                search: 'applied',
-                order: 'applied',
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4]
-                },
-            },
+
             {
                 extend: 'pdf',
                 text: '<i class="fa fa-file-pdf-o"></i> PDF',
                 className: 'btn btn-danger',
-                title: 'Replacement Recap',
+                title: 'Request Replacement Table',
                 search: 'applied',
                 order: 'applied',
                 exportOptions: {
@@ -89,9 +79,9 @@ $(document).ready(function () {
             },
             {
                 extend: 'print',
-                text: '<i class="fa fa-print title="Print"></i>',
+                text: '<i class="fa fa-print"></i> Print',
                 className: 'btn btn-primary',
-                title: 'Replacement Recap',
+                title: 'Request Replacement Table',
                 search: 'applied',
                 order: 'applied',
                 exportOptions: {

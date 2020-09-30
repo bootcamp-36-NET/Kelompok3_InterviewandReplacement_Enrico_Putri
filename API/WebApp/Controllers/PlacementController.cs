@@ -26,9 +26,9 @@ namespace WebApp.Controllers
                 {
                     return View();
                 }
-                return Redirect("/placementemp");
+                return Redirect("/ErrorHandler");
             }
-            return Redirect("/Error");
+            return Redirect("/ErrorHandler");
 
         }
 

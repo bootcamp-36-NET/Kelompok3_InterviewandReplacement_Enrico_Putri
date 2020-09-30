@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     debugger;
-    $('#ManageJoblists').DataTable({
+    table = $('#ManageJoblists').DataTable({
         "processing": true,
         "responsive": true,
         "pagination": true,
@@ -54,6 +54,43 @@
                         + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ><i class="fa fa-lg fa-times"></i></button>'
                 }
             }
+        ],
+        "dom": "Bfrtip",
+        "buttons": [
+            {
+                extend: 'excel',
+                text: '<i class="fa fa-file-excel-o"></i> Excel',
+                className: 'btn btn-success',
+                title: 'Joblist Table',
+                search: 'applied',
+                order: 'applied',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                },
+            },
+
+            {
+                extend: 'pdf',
+                text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                className: 'btn btn-danger',
+                title: 'Joblist Table',
+                search: 'applied',
+                order: 'applied',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                },
+            },
+            {
+                extend: 'print',
+                text: '<i class="fa fa-print"></i> Print',
+                className: 'btn btn-primary',
+                title: 'Joblist Table',
+                search: 'applied',
+                order: 'applied',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                },
+            },
         ]
     });
 });

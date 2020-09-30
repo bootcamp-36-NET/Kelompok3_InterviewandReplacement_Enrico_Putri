@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cornelia Putri\\Downloads\\baru dari rico 29 sep\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Cornelia Putri\\Downloads\\baru dari rico 29 sep\\3 abis testing\\API\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\Cornelia Putri\\Downloads\\baru dari rico 29 sep\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\API.csproj",
+      "projectPath": "C:\\Users\\Cornelia Putri\\Downloads\\baru dari rico 29 sep\\3 abis testing\\API\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Cornelia Putri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cornelia Putri\\Downloads\\baru dari rico 29 sep\\Kelompok3_InterviewandReplacement_Enrico_Putri-Enrico\\API\\API\\obj\\",
+      "outputPath": "C:\\Users\\Cornelia Putri\\Downloads\\baru dari rico 29 sep\\3 abis testing\\API\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

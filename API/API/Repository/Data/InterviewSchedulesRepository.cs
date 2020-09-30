@@ -19,15 +19,28 @@ namespace API.Repository.Data
             _context = context;
         }
 
-        public override async Task<int> Create(InterviewSchedule interviewSchedule)
-        {
-            //interviewSchedule.empId = interviewSchedule.empId;
-            interviewSchedule.CreateData = DateTimeOffset.Now;
-            interviewSchedule.isDelete = false;
-            await _context.Set<InterviewSchedule>().AddAsync(interviewSchedule);
-            var createItem = await _context.SaveChangesAsync();
-            return createItem;
-        }
+        //public override async Task<int> Create(InterviewSchedule interviewSchedule)
+        //{
+        //    interviewSchedule.empId = interviewSchedule.empId;
+        //    interviewSchedule.CreateData = DateTimeOffset.Now;
+        //    interviewSchedule.isDelete = false;
+        //    await _context.Set<InterviewSchedule>().AddAsync(interviewSchedule);
+        //    var createItem = await _context.SaveChangesAsync();
+        //    return createItem;
+        //}
+
+        //public override async Task<int> Create(InterviewSchedule interviewSchedule)
+        //{
+        //    List<InterviewVM> list = new List<InterviewVM>();
+
+        //    interviewSchedule.EmpId = interviewSchedule.EmpId;
+        //    interviewSchedule.CreateData = DateTimeOffset.Now;
+        //    interviewSchedule.isDelete = false;
+        //    await _context.Set<InterviewSchedule>().AddAsync(interviewSchedule);
+        //    var createItem = await _context.SaveChangesAsync();
+        //    return createItem;
+        //}
+
 
         public override async Task<List<InterviewSchedule>> GetAll()
         {

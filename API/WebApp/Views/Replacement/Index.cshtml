@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/_Layout.cshtml";
@@ -11,7 +11,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header no-bd">
-                    <h5 class="modal-title"><span class="fw-mediumbold">Job List</span></h5>
+                    <h5 class="modal-title"><span class="fw-mediumbold">Request Replacement</span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -24,7 +24,8 @@
                             <div class="col-sm-12">
                                 <div class="form-group form-group-default">
                                     <label>Employee</label>
-                                    <select class="form-control" id="EmployeeOption" name="EmployeeOption"></select>
+                                    @*<select class="form-control" id="EmployeeOption" name="EmployeeOption"></select>*@
+                                    <input type="text" id ="Employee" name="Employee" class="form-control" value="@Context.Session.GetString("id")" placeholder="@Context.Session.GetString("uname")" disabled/>
                                 </div>
                                 <div class="form-group form-group-default">
                                     <label>Site</label>

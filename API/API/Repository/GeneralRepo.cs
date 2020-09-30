@@ -53,7 +53,7 @@ namespace API.Repository
 
         public virtual async Task<TEntity> GetID(int Id)
         {
-            var data = await _context.Set<TEntity>().SingleOrDefaultAsync(x => x.Id == Id && x.isDelete == false);
+            var data = await _context.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == Id && x.isDelete == false);
             if (!data.Equals(0))
             {
                 return data;

@@ -24,7 +24,16 @@ $(document).ready(function () {
                     //return meta.row + 1;
                 }
             },
-            { "data": "interview_date" },
+            {
+                "data": "interview_date",
+                'render': function (jsonDate) {
+                    //var date = new Date(jsonDate).toDateString();
+                    //return date;
+                    var date = new Date(jsonDate);
+                    return moment(date).format('DD MMMM YYYY') + '<br> Time : ' + moment(date).format('HH: mm');
+                    //return ("0" + date.getDate()).slice(-2) + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + date.getFullYear();
+                }
+            },
             {
                 "data" : "empId"
                 //"className": "getIdEmp",
@@ -85,17 +94,7 @@ $(document).ready(function () {
                     columns: [0, 1, 2, 3, 4]
                 },
             },
-            {
-                extend: 'csv',
-                text: '<i class="fas fa-file-csv"></i> CSV',
-                className: 'btn btn-info',
-                title: 'Interview Schedule Table',
-                search: 'applied',
-                order: 'applied',
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4]
-                },
-            },
+           
             {
                 extend: 'pdf',
                 text: '<i class="fa fa-file-pdf-o"></i> PDF',
@@ -109,7 +108,7 @@ $(document).ready(function () {
             },
             {
                 extend: 'print',
-                text: '<i class="fa fa-print title="Print"></i>',
+                text: '<i class="fa fa-print"></i> Print',
                 className: 'btn btn-primary',
                 title: 'Interview Schedule Table',
                 search: 'applied',
@@ -149,8 +148,10 @@ $(document).ready(function () {
 });
 
 function ClearScreen() {
-    $('#Id').val('');
-    $('#Name').val('');
+    $('#interviewdate').val('');
+    $('#EmployeeOption').val('');
+    $('#JoblistOption').val('');
+    $('#SiteOption').val('');
     $('#update').hide();
     $('#add').show();
 }
@@ -288,7 +289,7 @@ function Save() {
         dataType: "JSON",
         data: InterviewSchedule
     }).then((result) => {
-        //debugger;
+        debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',

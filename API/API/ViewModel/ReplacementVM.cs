@@ -14,13 +14,15 @@ namespace API.ViewModel
         public string EmpName { get; set; }
         public int SiteId { get; set; }
         public int siteId { get; set; }
-        public int siteName { get; set; }
-        public int siteSupName { get; set; }
+        public string siteName { get; set; }
+        public string siteSupName { get; set; }
         public int sitephone { get; set; }
-        public int siteaddress { get; set; }
+        public string siteaddress { get; set; }
         public DateTimeOffset CreateData { get; set; }
         public DateTimeOffset UpdateDate { get; set; }
         public DateTimeOffset DeleteData { get; set; }
         public bool isDelete { get; set; }
+        public bool Approve { get; set; }
+        public bool Reject { get; set; }
     }
 }

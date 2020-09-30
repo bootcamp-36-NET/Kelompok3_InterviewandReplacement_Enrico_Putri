@@ -27,7 +27,15 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View("~/Views/Replacement/ApproveReject.cshtml");
+            if (HttpContext.Session.IsAvailable)
+            {
+                if (HttpContext.Session.GetString("lvl") == "Super Admin")
+                {
+                    return View("~/Views/Replacement/ApproveReject.cshtml");
+                }
+                return Redirect("/ErrorHandler");
+            }
+            return Redirect("/ErrorHandler");
         }
 
         public IActionResult LoadReplacement()
@@ -53,6 +61,8 @@ namespace WebApp.Controllers
             return Json(replacements);
 
         }
+
+
 
         //public IActionResult Approve(int id)
         //{

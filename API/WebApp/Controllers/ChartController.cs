@@ -18,7 +18,15 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.IsAvailable)
+            {
+                if (HttpContext.Session.GetString("lvl") == "Super Admin")
+                {
+                    return View();
+                }
+                return Redirect("/ErrorHandler");
+            }
+            return Redirect("/ErrorHandler");
         }
 
         public IActionResult LoadPie()
